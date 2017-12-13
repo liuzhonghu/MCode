@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.nec.myxycode.pop.PopShowActivity"
+    >
+
+  <Button
+      android:id="@+id/normal"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Normal"
+      />
+
+  <Button
+      android:id="@+id/normal_with_callback"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Normalwithcallback"
+      />
+
+  <Button
+      android:id="@+id/soft"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Softly"
+      />
+
+  <Button
+      android:id="@+id/deep_soft"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="DeepSoftly"
+      />
+
+  <Button
+      android:id="@+id/none_show"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="none2Show"
+      />
+
+  <Button
+      android:id="@+id/soft_none_show"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Softnone2Show"
+      />
+
+
+</LinearLayout>

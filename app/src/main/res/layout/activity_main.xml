@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:paddingTop="50dp"
+    tools:context="com.nec.myxycode.MainActivity"
+    >
+
+  <Button
+      android:id="@+id/btn_pop"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="pop"
+      android:text="果冻动画"
+      />
+
+  <Button
+      android:id="@+id/btn_lottie"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="lottie"
+      android:text="Lottie"
+      />
+
+  <Button
+      android:id="@+id/btn_progressbar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="progressbar"
+      android:text="分段Progressbar"
+      />
+  <Button
+      android:id="@+id/btn_scroll_number"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="scrollNumber"
+      android:text="scrollnumber"
+      />
+
+  <Button
+      android:id="@+id/btn_sticker"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="sketch"
+      android:text="旋转缩放VIEW"
+      />
+
+
+</LinearLayout>

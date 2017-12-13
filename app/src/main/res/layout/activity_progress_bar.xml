@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+  <com.nec.myxycode.progressbar.SegProgressbar
+      android:id="@+id/progressbar"
+      android:layout_width="wrap_content"
+      android:layout_height="10dp"
+      android:layout_marginTop="50dp"
+      app:p_circle_X_Y="30dp"
+      app:p_circle_radius="20dp"
+      app:p_height="6dp"
+      app:p_progressBackColor="#4DFFFFFF"
+      app:p_progressColor="#FF7044"
+      app:p_progressDoubleSegColor="#000000"
+      app:p_showProgressSegment = "false"
+      app:p_progressSegmentColor="#000000"
+      app:p_shapeType="rectangle"
+      app:p_showText="false"
+      app:p_square_radius="3dp"
+      app:p_textHighColor="#885500"
+      app:p_textLowColor="#880055"
+      app:p_textMiddleColor="#008855"
+      app:p_textSize="13sp"
+      />
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="startProgress"
+      android:text="start"/>
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="delProgress"
+      android:text="del"
+      />
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      />
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="addProgress"
+      android:text="pause"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      />
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="resumeProgress"
+      android:text="resume"
+      />
+
+</LinearLayout>
