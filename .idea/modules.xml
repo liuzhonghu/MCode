@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyXYCode.iml" filepath="$PROJECT_DIR$/MyXYCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MCode.iml" filepath="$PROJECT_DIR$/MCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kboardlib/kboardlib.iml" filepath="$PROJECT_DIR$/kboardlib/kboardlib.iml" />
     </modules>
