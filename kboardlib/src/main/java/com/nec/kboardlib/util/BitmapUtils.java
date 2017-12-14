@@ -106,8 +106,7 @@ public class BitmapUtils {
     InputStream open = null;
     Bitmap bitmap = null;
     try {
-      String temp = path;
-      open = context.getAssets().open(temp);
+      open = context.getAssets().open(path);
       BitmapFactory.Options options = new BitmapFactory.Options();
       options = sampleBitmapOptions(context, options, 10, 10);
       bitmap = BitmapFactory.decodeStream(open, null, options);
