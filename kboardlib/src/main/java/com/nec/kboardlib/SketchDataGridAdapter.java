@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nec.kboardlib.model.SketchData;
+import com.nec.kboardlib.util.ScreenUtils;
 import java.util.List;
 
 /**

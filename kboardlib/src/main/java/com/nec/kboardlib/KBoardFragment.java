@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -35,6 +36,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.nec.kboardlib.model.SketchData;
 import com.nec.kboardlib.model.StrokeRecord;
+import com.nec.kboardlib.util.BitmapUtils;
+import com.nec.kboardlib.util.ScreenUtils;
+import com.nec.kboardlib.util.TimeUtils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -615,7 +619,6 @@ public class KBoardFragment extends Fragment
 
       out.close();
       newBM.recycle();
-      newBM = null;
       return f;
     } catch (Exception e) {
       return null;
@@ -623,7 +626,166 @@ public class KBoardFragment extends Fragment
   }
 
   @Override public void onClick(View v) {
+    int id = v.getId();
+    if (id == R.id.btn_add) {
+      if (mSketchView.getVisibility() == View.VISIBLE) {
+        mSketchView.createCurThumbnailBM();
+        showSketchView(false);
+      } else {
+        showSketchView(true);
+      }
+      updateGV();
+    } else if (id == R.id.btn_stroke) {
+      if (mSketchView.getEditMode() == KSketchView.EDIT_STROKE
+          && mSketchView.getStrokeType() != STROKE_TYPE_ERASER) {
+        showParamsPopupWindow(v, STROKE_TYPE_DRAW);
+      } else {
+        int checkedId = strokeTypeRG.getCheckedRadioButtonId();
+        if (checkedId == R.id.stroke_type_rbtn_draw) {
+          strokeType = STROKE_TYPE_DRAW;
+        } else if (checkedId == R.id.stroke_type_rbtn_line) {
+          strokeType = STROKE_TYPE_LINE;
+        } else if (checkedId == R.id.stroke_type_rbtn_circle) {
+          strokeType = STROKE_TYPE_CIRCLE;
+        } else if (checkedId == R.id.stroke_type_rbtn_rectangle) {
+          strokeType = STROKE_TYPE_RECTANGLE;
+        } else if (checkedId == R.id.stroke_type_rbtn_text) {
+          strokeType = STROKE_TYPE_TEXT;
+        }
+        mSketchView.setStrokeType(strokeType);
+      }
+      mSketchView.setEditMode(KSketchView.EDIT_STROKE);
+      showBtn(btn_stroke);
+    } else if (id == R.id.btn_eraser) {
+      if (mSketchView.getEditMode() == KSketchView.EDIT_STROKE
+          && mSketchView.getStrokeType() == STROKE_TYPE_ERASER) {
+        showParamsPopupWindow(v, STROKE_TYPE_ERASER);
+      } else {
+        mSketchView.setStrokeType(STROKE_TYPE_ERASER);
+      }
+      mSketchView.setEditMode(KSketchView.EDIT_STROKE);
+      showBtn(btn_eraser);
+    } else if (id == R.id.btn_undo) {
+      mSketchView.undo();
+    } else if (id == R.id.btn_redo) {
+      mSketchView.redo();
+    } else if (id == R.id.btn_empty) {
+      askForErase();
+    } else if (id == R.id.btn_save) {
+      if (mSketchView.getRecordCount() == 0) {
+        Toast.makeText(getActivity(), "您还没有绘图", Toast.LENGTH_SHORT).show();
+      } else {
+        showSaveDialog();
+      }
+    } else if (id == R.id.btn_photo) {
+      startMultiImageSelector(REQUEST_IMAGE);
+    } else if (id == R.id.btn_background) {
+      startMultiImageSelector(REQUEST_BACKGROUND);
+    } else if (id == R.id.btn_drag) {
+      mSketchView.setEditMode(KSketchView.EDIT_PHOTO);
+      showBtn(btn_drag);
+    } else if (id == R.id.btn_send) {
+      if (sendBtnCallback != null) {
+        new Thread(new Runnable() {
+          @Override public void run() {
+            String photoName = TEMP_FILE_NAME + TimeUtils.getNowTimeString();
+            sendBtnCallback.onSendBtnClick(saveInOI(TEMP_FILE_PATH, photoName, 50));
+          }
+        }).start();
+      }
+    }
+  }
 
+  private void startMultiImageSelector(int request) {
+    MultiImageSelector selector = MultiImageSelector.create(getActivity());
+    selector.showCamera(true);
+    selector.count(9);
+    selector.single();
+    selector.origin(mSelectPath);
+    Bundle boundsBundle = new Bundle();
+    Rect rect = new Rect();
+    mSketchView.getLocalVisibleRect(rect);
+    int[] boundsInts = new int[4];
+    //noinspection Range
+    mSketchView.getLocationInWindow(boundsInts);
+    boundsInts[1] -= ScreenUtils.getStatusBarHeight(activity);
+    boundsInts[2] = mSketchView.getWidth();
+    boundsInts[3] = mSketchView.getHeight();
+    selector.start(this, boundsInts, request);
+  }
+
+  private void showSaveDialog() {
+    saveDialog.show();
+    saveET.setText(TimeUtils.getNowTimeString());
+    saveET.selectAll();
+    ScreenUtils.showInput(mSketchView);
+  }
+
+  private void askForErase() {
+    new AlertDialog.Builder(getActivity()).setMessage("擦除手绘?")
+        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+          @Override public void onClick(DialogInterface dialog, int which) {
+            mSketchView.erase();
+          }
+        })
+        .create()
+        .show();
+  }
+
+  private void showBtn(ImageView iv) {
+    btn_eraser.setAlpha(BTN_ALPHA);
+    btn_stroke.setAlpha(BTN_ALPHA);
+    btn_drag.setAlpha(BTN_ALPHA);
+    iv.setAlpha(1f);
+  }
+
+  private void showParamsPopupWindow(View anchor, int drawMode) {
+    if (BitmapUtils.isLandScreen(activity)) {
+      if (drawMode == STROKE_TYPE_DRAW) {
+        strokePopupWindow.showAsDropDown(anchor, ScreenUtils.dip2px(activity, -pupWindowsDPWidth),
+            -anchor.getHeight());
+      } else {
+        eraserPopupWindow.showAsDropDown(anchor, ScreenUtils.dip2px(activity, -pupWindowsDPWidth),
+            -anchor.getHeight());
+      }
+    } else {
+      if (drawMode == STROKE_TYPE_DRAW) {
+        strokePopupWindow.showAsDropDown(anchor, 0, 0);
+      } else {
+        eraserPopupWindow.showAsDropDown(anchor, 0, 0);
+      }
+    }
+  }
+
+  @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == REQUEST_IMAGE) {
+      if (resultCode == getActivity().RESULT_OK) {
+        mSelectPath = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+        String path = "";
+        if (mSelectPath.size() == 1) {
+          path = mSelectPath.get(0);
+        } else if (mSelectPath == null || mSelectPath.size() == 0) {
+          Toast.makeText(getActivity(), "图片加载失败,请重试!", Toast.LENGTH_LONG).show();
+        }
+        //加载图片
+        mSketchView.addPhotoByPath(path);
+        mSketchView.setEditMode(KSketchView.EDIT_PHOTO);
+        showBtn(btn_drag);
+      }
+    } else if (requestCode == REQUEST_BACKGROUND) {//设置背景成功
+      if (resultCode == getActivity().RESULT_OK) {
+        mSelectPath = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
+        String path = "";
+        if (mSelectPath.size() == 1) {
+          path = mSelectPath.get(0);
+        } else if (mSelectPath == null || mSelectPath.size() == 0) {
+          Toast.makeText(getActivity(), "图片加载失败,请重试!", Toast.LENGTH_LONG).show();
+        }
+        mSketchView.setBackgroundByPath(path);
+        Log.i("imgPath", path);
+        //加载图片设置画板背景
+      }
+    }
   }
 
   class saveToFileTask extends AsyncTask<String, Void, File> {

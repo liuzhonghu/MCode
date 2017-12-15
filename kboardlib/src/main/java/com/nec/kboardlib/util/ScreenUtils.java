@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.util;
 
 import android.content.Context;
 import android.graphics.Point;

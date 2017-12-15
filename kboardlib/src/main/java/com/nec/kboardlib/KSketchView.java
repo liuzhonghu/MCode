@@ -29,6 +29,7 @@ import com.nec.kboardlib.model.PhotoRecord;
 import com.nec.kboardlib.model.SketchData;
 import com.nec.kboardlib.model.StrokeRecord;
 import com.nec.kboardlib.util.BitmapUtils;
+import com.nec.kboardlib.util.ScreenUtils;
 import java.io.File;
 
 import static com.nec.kboardlib.model.StrokeRecord.STROKE_TYPE_CIRCLE;
@@ -49,9 +50,11 @@ public class KSketchView extends View implements View.OnTouchListener {
 
   public static final int EDIT_STROKE = 1;
   public static final int EDIT_PHOTO = 2;
+
   public static final int DEFAULT_STROKE_SIZE = 3;
   public static final int DEFAULT_STROKE_ALPHA = 100;
   public static final int DEFAULT_ERASER_SIZE = 50;
+
   public static float SCALE_MAX = 4.0f;
   public static float SCALE_MIN = 0.2f;
   public static float SCALE_MIN_LEN;
