@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+  <HorizontalScrollView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+      <Button
+          android:id="@+id/btnHosSkew"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="水平错切"
+          />
+
+      <Button
+          android:id="@+id/btnVerSkew"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="垂直错切"
+          />
+
+      <Button
+          android:id="@+id/btnComplexSkew"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="复合错切"
+          />
+
+      <Button
+          android:id="@+id/btnRotate"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="旋转"
+          />
+    </LinearLayout>
+
+  </HorizontalScrollView>
+
+  <HorizontalScrollView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+      <Button
+          android:id="@+id/btnHosScale"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="水平镜像"
+          />
+
+      <Button
+          android:id="@+id/btnVerScale"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="垂直镜像"
+          />
+
+      <Button
+          android:id="@+id/btnZoom"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="缩放"
+          />
+
+      <Button
+          android:id="@+id/btnTranslate"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="平移"
+          />
+
+      <Button
+          android:id="@+id/btnReset"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="1dp"
+          android:text="重置"
+          />
+    </LinearLayout>
+
+  </HorizontalScrollView>
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <com.nec.myxycode.matrix.widget.TransformMatrixView
+        android:id="@+id/ivTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:trans_image="@mipmap/beauty2"
+        />
+  </RelativeLayout>
+</LinearLayout>

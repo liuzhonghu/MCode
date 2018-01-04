@@ -35,4 +35,8 @@
     <attr name="number_size" format="integer"/>
     <!--<attr name="number_color" format="color"/>-->
   </declare-styleable>
+
+  <declare-styleable name="TransformMatrixView">
+    <attr name="trans_image" format="reference"/>
+  </declare-styleable>
 </resources>
