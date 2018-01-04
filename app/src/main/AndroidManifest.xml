@@ -53,6 +53,8 @@
         android:name=".sketch.SketchActivity"
         android:screenOrientation="portrait">
     </activity>
+    <activity android:name=".matrix.MatrixActivity">
+    </activity>
   </application>
 
 </manifest>

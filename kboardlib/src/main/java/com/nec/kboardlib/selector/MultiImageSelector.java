@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.selector;
 
 import android.Manifest;
 import android.app.Activity;
@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
+import com.nec.kboardlib.R;
 import java.util.ArrayList;
 
 /**

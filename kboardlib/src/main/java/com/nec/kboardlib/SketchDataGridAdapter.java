@@ -19,8 +19,6 @@ import java.util.List;
  */
 public class SketchDataGridAdapter extends BaseAdapter {
 
-  String TAG = "tangentLu";
-
   public interface OnActionCallback {
     void onDeleteCallback(int position);
 

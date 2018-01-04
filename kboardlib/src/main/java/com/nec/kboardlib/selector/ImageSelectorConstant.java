@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.selector;
 
 /**
  * @author Elijah <a href="zhonghu.liu@quvideo.com">Contact me.</a>

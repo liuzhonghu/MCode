@@ -16,7 +16,7 @@
     <!-- android:name="" -->
     <!-- android:configChanges="orientation|screenSize" -->
     <!-- android:theme="@style/Base.Theme.AppCompat.Dialog"/> -->
-    <activity android:name=".MultiImageSelectorActivity">
+    <activity android:name=".selector.MultiImageSelectorActivity">
     </activity>
   </application>
 

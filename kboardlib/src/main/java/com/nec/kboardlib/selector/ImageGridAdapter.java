@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.selector;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import com.nec.kboardlib.KBoardFragment;
+import com.nec.kboardlib.R;
 import com.nec.kboardlib.model.Image;
+import com.nec.kboardlib.selector.MultiImageSelectorFragment;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;

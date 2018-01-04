@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.selector;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,25 +17,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import com.nec.kboardlib.KBoardFragment;
+import com.nec.kboardlib.R;
 import java.io.File;
 import java.util.ArrayList;
-
-import static com.nec.kboardlib.ImageSelectorConstant.DEFAULT_IMAGE_SIZE;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_BOUNDS;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_DEFAULT_SELECTED_LIST;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_REQUEST_TYPE;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_RESULT;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_SELECT_COUNT;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_SELECT_MODE;
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_SHOW_CAMERA;
-import static com.nec.kboardlib.ImageSelectorConstant.MODE_MULTI;
 
 public class MultiImageSelectorActivity extends AppCompatActivity
     implements MultiImageSelectorFragment.Callback {
 
   private ArrayList<String> resultList = new ArrayList<>();
   private Button mSubmitButton;
-  private int mDefaultCount = DEFAULT_IMAGE_SIZE;
+  private int mDefaultCount = ImageSelectorConstant.DEFAULT_IMAGE_SIZE;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -57,9 +49,9 @@ public class MultiImageSelectorActivity extends AppCompatActivity
 
     //获取各种配置信息
     final Intent intent = getIntent();
-    mDefaultCount = intent.getIntExtra(EXTRA_SELECT_COUNT, DEFAULT_IMAGE_SIZE);
-    int mRequestType = intent.getIntExtra(EXTRA_REQUEST_TYPE, KBoardFragment.REQUEST_IMAGE);
-    final int mode = intent.getIntExtra(EXTRA_SELECT_MODE, MODE_MULTI);
+    mDefaultCount = intent.getIntExtra(ImageSelectorConstant.EXTRA_SELECT_COUNT, ImageSelectorConstant.DEFAULT_IMAGE_SIZE);
+    int mRequestType = intent.getIntExtra(ImageSelectorConstant.EXTRA_REQUEST_TYPE, KBoardFragment.REQUEST_IMAGE);
+    final int mode = intent.getIntExtra(ImageSelectorConstant.EXTRA_SELECT_MODE, ImageSelectorConstant.MODE_MULTI);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     if (mRequestType == KBoardFragment.REQUEST_BACKGROUND) {
       toolbar.setTitle("选择背景");
@@ -74,13 +66,14 @@ public class MultiImageSelectorActivity extends AppCompatActivity
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
-    final boolean isShow = intent.getBooleanExtra(EXTRA_SHOW_CAMERA, true);
-    if (mode == MODE_MULTI && intent.hasExtra(EXTRA_DEFAULT_SELECTED_LIST)) {
-      resultList = intent.getStringArrayListExtra(EXTRA_DEFAULT_SELECTED_LIST);
+    final boolean isShow = intent.getBooleanExtra(ImageSelectorConstant.EXTRA_SHOW_CAMERA, true);
+    if (mode == ImageSelectorConstant.MODE_MULTI && intent.hasExtra(
+        ImageSelectorConstant.EXTRA_DEFAULT_SELECTED_LIST)) {
+      resultList = intent.getStringArrayListExtra(ImageSelectorConstant.EXTRA_DEFAULT_SELECTED_LIST);
     }
     //多选模式下的提交按钮
     mSubmitButton = (Button) findViewById(R.id.commit);
-    if (mode == MODE_MULTI) {
+    if (mode == ImageSelectorConstant.MODE_MULTI) {
       updateDoneText(resultList);
       mSubmitButton.setVisibility(View.VISIBLE);
       mSubmitButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +81,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
           if (resultList != null && resultList.size() > 0) {
             // Notify success
             Intent data = new Intent();
-            data.putStringArrayListExtra(EXTRA_RESULT, resultList);
+            data.putStringArrayListExtra(ImageSelectorConstant.EXTRA_RESULT, resultList);
             setResult(RESULT_OK, data);
           } else {
             setResult(RESULT_CANCELED);
@@ -106,7 +99,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
       bundle.putInt(MultiImageSelectorFragment.EXTRA_SELECT_MODE, mode);
       bundle.putBoolean(MultiImageSelectorFragment.EXTRA_SHOW_CAMERA, isShow);
       bundle.putStringArrayList(MultiImageSelectorFragment.EXTRA_DEFAULT_SELECTED_LIST, resultList);
-      bundle.putInt(EXTRA_REQUEST_TYPE, mRequestType);
+      bundle.putInt(ImageSelectorConstant.EXTRA_REQUEST_TYPE, mRequestType);
       getSupportFragmentManager().beginTransaction()
           .add(R.id.image_grid,
               Fragment.instantiate(this, MultiImageSelectorFragment.class.getName(), bundle))
@@ -119,7 +112,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
    */
   private void setActivitySize(int orientation) {
     Intent intent = getIntent();
-    int[] bounds = intent.getIntArrayExtra(EXTRA_BOUNDS);
+    int[] bounds = intent.getIntArrayExtra(ImageSelectorConstant.EXTRA_BOUNDS);
     WindowManager.LayoutParams p = getWindow().getAttributes();  //获取对话框当前的参数值
     if (orientation == Configuration.ORIENTATION_LANDSCAPE) {//横屏
       p.x = bounds[0] + bounds[2] / 2;
@@ -177,7 +170,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
   @Override public void onSingleImageSelected(String path) {
     Intent data = new Intent();
     resultList.add(path);
-    data.putStringArrayListExtra(EXTRA_RESULT, resultList);
+    data.putStringArrayListExtra(ImageSelectorConstant.EXTRA_RESULT, resultList);
     setResult(RESULT_OK, data);
     finish();
   }
@@ -203,7 +196,7 @@ public class MultiImageSelectorActivity extends AppCompatActivity
 
       Intent data = new Intent();
       resultList.add(imageFile.getAbsolutePath());
-      data.putStringArrayListExtra(EXTRA_RESULT, resultList);
+      data.putStringArrayListExtra(ImageSelectorConstant.EXTRA_RESULT, resultList);
       setResult(RESULT_OK, data);
       finish();
     }

@@ -1,4 +1,4 @@
-package com.nec.kboardlib;
+package com.nec.kboardlib.selector;
 
 import android.Manifest;
 import android.app.Activity;
@@ -34,6 +34,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.nec.kboardlib.KBoardFragment;
+import com.nec.kboardlib.R;
 import com.nec.kboardlib.model.Folder;
 import com.nec.kboardlib.model.Image;
 import com.nec.kboardlib.util.FileUtils;
@@ -46,8 +48,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import static com.nec.kboardlib.ImageSelectorConstant.EXTRA_REQUEST_TYPE;
 
 /**
  * 图片选择器
@@ -205,7 +205,7 @@ public class MultiImageSelectorFragment extends Fragment {
   }
 
   private void getRequstType() {
-    mRequestType = getArguments().getInt(EXTRA_REQUEST_TYPE);
+    mRequestType = getArguments().getInt(ImageSelectorConstant.EXTRA_REQUEST_TYPE);
   }
 
   /**

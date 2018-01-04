@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.nec.myxycode.lottie.ALottieActivity;
+import com.nec.myxycode.matrix.MatrixActivity;
 import com.nec.myxycode.pop.Pop;
 import com.nec.myxycode.pop.PopShowActivity;
 import com.nec.myxycode.progressbar.ProgressBarActivity;
@@ -43,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
   public void sketch(View view) {
     Pop.show(findViewById(R.id.btn_sticker));
     this.startActivity(new Intent(this, SketchActivity.class));
+  }
+
+  public void matrix(View view) {
+    Pop.show(findViewById(R.id.btn_matrix));
+    this.startActivity(new Intent(this, MatrixActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

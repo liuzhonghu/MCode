@@ -36,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.nec.kboardlib.model.SketchData;
 import com.nec.kboardlib.model.StrokeRecord;
+import com.nec.kboardlib.selector.MultiImageSelector;
 import com.nec.kboardlib.util.BitmapUtils;
 import com.nec.kboardlib.util.ScreenUtils;
 import com.nec.kboardlib.util.TimeUtils;

@@ -124,7 +124,7 @@ public class KSketchView extends View implements View.OnTouchListener {
             }
 
             @Override public boolean onScaleBegin(ScaleGestureDetector detector) {
-              return false;
+              return true;
             }
 
             @Override public void onScaleEnd(ScaleGestureDetector detector) {
@@ -270,7 +270,9 @@ public class KSketchView extends View implements View.OnTouchListener {
     switch (event.getAction() & MotionEvent.ACTION_MASK) {
       case MotionEvent.ACTION_POINTER_DOWN:
         float downDistance = spacing(event);
-        if (actionMode == ACTION_DRAG && downDistance > 10.f) actionMode = ACTION_SCALE;
+        if (actionMode == ACTION_DRAG && downDistance > 10.f) {
+          actionMode = ACTION_SCALE;
+        }
         break;
       case MotionEvent.ACTION_DOWN:
         touch_down();
@@ -285,6 +287,8 @@ public class KSketchView extends View implements View.OnTouchListener {
         invalidate();
         break;
     }
+    preX = curX;
+    preY = curY;
     return true;
   }
 
@@ -297,11 +301,11 @@ public class KSketchView extends View implements View.OnTouchListener {
     if (curSketchData.editMode == EDIT_STROKE) {
       curSketchData.strokeRedoList.clear();
       curStrokeRecord = new StrokeRecord(curSketchData.strokeType);
-      strokePaint.setAntiAlias(true);//由于降低密度绘制，所以需要抗锯齿
+      strokePaint.setAntiAlias(true);
       if (curSketchData.strokeType == STROKE_TYPE_ERASER) {
-        strokePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));//关键代码
+        strokePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
       } else {
-        strokePaint.setXfermode(null);//关键代码
+        strokePaint.setXfermode(null);
       }
       if (curSketchData.strokeType == STROKE_TYPE_ERASER) {
         strokePath = new Path();
@@ -416,17 +420,6 @@ public class KSketchView extends View implements View.OnTouchListener {
     newRecord.matrix = new Matrix();
     newRecord.matrix.postTranslate(getWidth() / 2 - bitmap.getWidth() / 2,
         getHeight() / 2 - bitmap.getHeight() / 2);
-    return newRecord;
-  }
-
-  @NonNull public PhotoRecord initPhotoRecord(Bitmap bitmap, int[] position) {
-    PhotoRecord newRecord = new PhotoRecord();
-    newRecord.bitmap = bitmap;
-    newRecord.photoRectSrc =
-        new RectF(0, 0, newRecord.bitmap.getWidth(), newRecord.bitmap.getHeight());
-    newRecord.scaleMax = getMaxScale(newRecord.photoRectSrc);//放大倍数
-    newRecord.matrix = new Matrix();
-    newRecord.matrix.postTranslate(position[0], position[1]);
     return newRecord;
   }
 
@@ -638,7 +631,20 @@ public class KSketchView extends View implements View.OnTouchListener {
   }
 
   private void onScaleAction(ScaleGestureDetector detector) {
-
+    float[] photoCorners = calculateCorners(curPhotoRecord);
+    //目前图片对角线长度
+    float len = (float) Math.sqrt(
+        Math.pow(photoCorners[0] - photoCorners[4], 2) + Math.pow(photoCorners[1] - photoCorners[5],
+            2));
+    double photoLen = Math.sqrt(Math.pow(curPhotoRecord.photoRectSrc.width(), 2) + Math.pow(
+        curPhotoRecord.photoRectSrc.height(), 2));
+    float scaleFactor = detector.getScaleFactor();
+    //设置Matrix缩放参数
+    if ((scaleFactor < 1 && len >= photoLen * SCALE_MIN && len >= SCALE_MIN_LEN) || (scaleFactor > 1
+        && len <= photoLen * SCALE_MAX)) {
+      Log.e(scaleFactor + "", scaleFactor + "");
+      curPhotoRecord.matrix.postScale(scaleFactor, scaleFactor, photoCorners[8], photoCorners[9]);
+    }
   }
 
   public void onDragAction(float distanceX, float distanceY) {
