@@ -80,20 +80,6 @@ import java.util.Random;
     oldCoordinate = new PointF();
   }
 
-  @Override protected void onDraw(Canvas canvas) {
-    super.onDraw(canvas);
-    if (mBitmap == null) return;
-    canvas.translate(200, 200);
-    // 绘制坐标系
-    CanvasAidUtils.set2DAxisLength(500, 0, 600, 0);
-    CanvasAidUtils.draw2DCoordinateSpace(canvas);
-
-    mMatrix.mapPoints(mPoints, mOriginPoints);
-    canvas.drawRect(0, 0, mBitmapWidth, mBitmapHeight, mPaint);
-    canvas.drawBitmap(mBitmap, mMatrix, mPaint);
-    printLog();
-  }
-
   //  水平错切
   public void setHosSkew() {
     mMatrix.setSkew(0.5f, 0f);
@@ -117,9 +103,9 @@ import java.util.Random;
 
   //旋转
   public void setRotate() {
-    mMatrix.postRotate(15); //绕左上角旋转
-    //        mMatrix.postRotate(15, mPoints[0], mPoints[1]); //绕左上角旋转
-    //        mMatrix.postRotate(15, mPoints[8], mPoints[9]); //绕中心旋转
+    mMatrix.postRotate(30); //绕左上角旋转
+    //        mMatrix.postRotate(30, mPoints[0], mPoints[1]); //绕左上角旋转
+    //        mMatrix.postRotate(30, mPoints[8], mPoints[9]); //绕中心旋转
     invalidate();
   }
 
@@ -141,16 +127,16 @@ import java.util.Random;
 
   //放大缩小
   public void setZoom() {
-    float[] b = { 1.2f, 0.8f };
+    float[] b = { 2.f, 1.2f, .8f, .5f };
     Random rand = new Random();
-    int num = rand.nextInt(2);
+    int num = rand.nextInt(4);
     mMatrix.postScale(b[num], b[num]);
     invalidate();
   }
 
   //水平移动
   public void setTranslate() {
-    mMatrix.postTranslate(10, 10);
+    mMatrix.postTranslate(20, 20);
     invalidate();
   }
 
@@ -170,6 +156,20 @@ import java.util.Random;
       }
       Log.d(TAG, "矩阵 = " + temp);
     }
+  }
+
+  @Override protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+    if (mBitmap == null) return;
+    canvas.translate(200, 200);
+    // 绘制坐标系
+    CanvasAidUtils.set2DAxisLength(500, 0, 600, 0);
+    CanvasAidUtils.draw2DCoordinateSpace(canvas);
+
+    mMatrix.mapPoints(mPoints, mOriginPoints);
+    canvas.drawRect(0, 0, mBitmapWidth, mBitmapHeight, mPaint);
+    canvas.drawBitmap(mBitmap, mMatrix, mPaint);
+    printLog();
   }
 
   @Override public boolean onTouchEvent(MotionEvent event) {
@@ -234,8 +234,8 @@ import java.util.Random;
     } catch (OutOfMemoryError e) {
       return null;
     }
-    int intrinsicWidth = drawable.getIntrinsicWidth() / 2;
-    int intrinsicHeight = drawable.getIntrinsicHeight() / 2;
+    int intrinsicWidth = drawable.getIntrinsicWidth() / 3;
+    int intrinsicHeight = drawable.getIntrinsicHeight() / 3;
     Bitmap bitmap = Bitmap.createBitmap(intrinsicWidth <= 0 ? 50 : intrinsicWidth,
         intrinsicHeight <= 0 ? 50 : intrinsicHeight, Bitmap.Config.ARGB_8888);
 

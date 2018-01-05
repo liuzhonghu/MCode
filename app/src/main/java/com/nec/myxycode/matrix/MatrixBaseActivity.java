@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.nec.myxycode.R;
 import com.nec.myxycode.matrix.widget.TransformMatrixView;
+import com.nec.myxycode.pop.Pop;
 
 public class MatrixBaseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +28,7 @@ public class MatrixBaseActivity extends AppCompatActivity implements View.OnClic
   }
 
   @Override public void onClick(View v) {
+    Pop.showSoftly(v);
     switch (v.getId()) {
       case R.id.btnHosSkew:
         ivTest.setHosSkew();

@@ -7,7 +7,7 @@ import android.graphics.PointF;
 
 /**
  * @author Elijah <a href="zhonghu.liu@quvideo.com">Contact me.</a>
- * @desc
+ * @desc 根据已知点绘制线
  * @since 2018/1/4
  */
 
