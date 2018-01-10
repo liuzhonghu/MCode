@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -25,11 +26,16 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
+  apt 'com.google.dagger:dagger-compiler:2.8'
   compile deps.appcompatv7
+  compile deps.recyclerviewv7
   compile deps.supportConstraint
+  compile deps.supportDesign
   compile deps.okhttp
+  compile deps.dagger
   compile deps.junit
   compile deps.lottie
+  compile deps.butterknife
   compile project(path: ':kboardlib')
   compile project(path: ':fpsactorlib')
 }
