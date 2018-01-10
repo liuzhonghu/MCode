@@ -29,3 +29,48 @@ allprojects {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+
+// Variables for entire project
+ext {
+  // SDK versions
+  minSdkVersion = 16
+  targetSdkVersion = 26
+  compileSdkVersion = 26
+  buildToolsVersion = "25.0.3"
+  sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+  targetCompatibilityVersion = JavaVersion.VERSION_1_7
+
+  // Common versions
+  supportLibraryVersion = "26.0.0"
+  butterKnifeVersion = "7.0.1"
+  daggerVersion = "2.8"
+  picassoVersion = "2.5.2"
+  constraintVersion = "1.0.2"
+  okVersion = "3.5.0"
+  lottieVersion = "2.1.0"
+
+  // POM file
+  GROUP = "com.github.liuzhonghu"
+  VERSION_NAME = "0.1.1-snapshot"
+}
+
+ext.deps = [// compile
+            appcompatv7      : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            supportV4        : "com.android.support:support-v4:$supportLibraryVersion",
+            supportDesign    : "com.android.support:design:$supportLibraryVersion",
+            supportConstraint: "com.android.support.constraint:constraint-layout:$constraintVersion",
+            recyclerviewv7   : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            butterknife      : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            picasso          : "com.squareup.picasso:picasso:$picassoVersion",
+            okhttp           : "com.squareup.okhttp3:okhttp:$okVersion",
+            dagger           : "com.google.dagger:dagger:${daggerVersion}",
+            lottie           : "com.airbnb.android:lottie:$lottieVersion",
+            // annotationProcessor
+            daggerCompiler   : "com.google.dagger:dagger-compiler:${daggerVersion}",
+
+            // provided
+            javaxAnnotation  : "org.glassfish:javax.annotation:10.0-b28",
+
+            // testCompile
+            junit            : "junit:junit:4.12",
+            assertJ          : "org.assertj:assertj-core:1.7.1"]

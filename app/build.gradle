@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.3"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
   defaultConfig {
     applicationId "com.nec.myxycode"
-    minSdkVersion 16
-    targetSdkVersion 23
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -25,11 +25,11 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
-  compile 'com.android.support:appcompat-v7:25.4.0'
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
-  compile 'com.airbnb.android:lottie:2.1.0'
-  compile 'com.squareup.okhttp3:okhttp:3.5.0'
-  testCompile 'junit:junit:4.12'
+  compile deps.appcompatv7
+  compile deps.supportConstraint
+  compile deps.okhttp
+  compile deps.junit
+  compile deps.lottie
   compile project(path: ':kboardlib')
   compile project(path: ':fpsactorlib')
 }
