@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.nec.myxycode.fpsactor.FPSActorActivity;
 import com.nec.myxycode.lottie.ALottieActivity;
 import com.nec.myxycode.matrix.MatrixActivity;
 import com.nec.myxycode.pop.Pop;
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
   public void matrix(View view) {
     Pop.show(findViewById(R.id.btn_matrix));
     this.startActivity(new Intent(this, MatrixActivity.class));
+  }
+
+  public void FPSActor(View view){
+    Pop.show(findViewById(R.id.btn_fps));
+    this.startActivity(new Intent(this, FPSActorActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

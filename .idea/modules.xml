@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MCode.iml" filepath="$PROJECT_DIR$/MCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" filepath="$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/kboardlib/kboardlib.iml" filepath="$PROJECT_DIR$/kboardlib/kboardlib.iml" />
     </modules>
   </component>

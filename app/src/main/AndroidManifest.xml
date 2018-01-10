@@ -61,6 +61,8 @@
     </activity>
     <activity android:name=".matrix.RectToRectActivity">
     </activity>
+    <activity android:name=".fpsactor.FPSActorActivity">
+    </activity>
   </application>
 
 </manifest>
