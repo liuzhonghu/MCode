@@ -1,4 +1,4 @@
-package com.nec.myxycode.draggableRC;
+package com.nec.myxycode.draggableRC.adapter;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
-package com.nec.myxycode.draggableRC;
+package com.nec.myxycode.draggableRC.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 
 import android.widget.Toast;
 import com.nec.myxycode.R;
+import com.nec.myxycode.draggableRC.adapter.DividerGridItemDecoration;
+import com.nec.myxycode.draggableRC.adapter.DragItem;
+import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
 import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
 import com.nec.myxycode.util.ACache;
@@ -48,18 +52,18 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
       mDataList.addAll(items);
     } else {
       for (int i = 0; i < 3; i++) {
-        mDataList.add(new DragItem(i * 8, "Brown_cow", R.mipmap.brown_cow));
-        mDataList.add(new DragItem(i * 8 + 1, "Butterfly", R.mipmap.butterfly));
-        mDataList.add(new DragItem(i * 8 + 2, "Camel", R.mipmap.camel));
-        mDataList.add(new DragItem(i * 8 + 3, "Crocodile", R.mipmap.crocodile));
-        mDataList.add(new DragItem(i * 8 + 4, "Froggy", R.mipmap.froggy));
-        mDataList.add(new DragItem(i * 8 + 5, "Giraffe", R.mipmap.giraffe));
-        mDataList.add(new DragItem(i * 8 + 6, "Kitten", R.mipmap.kitten));
-        mDataList.add(new DragItem(i * 8 + 7, "Lion", R.mipmap.lion));
-        mDataList.add(new DragItem(i * 8 + 8, "Monkey", R.mipmap.monkey));
-        mDataList.add(new DragItem(i * 8 + 9, "Panda", R.mipmap.panda));
-        mDataList.add(new DragItem(i * 8 + 10, "Tiger", R.mipmap.tiger));
-        mDataList.add(new DragItem(i * 8 + 12, "Turtle", R.mipmap.turtle));
+        mDataList.add(new DragItem(i * 7, "Brown_cow", R.mipmap.brown_cow));
+        mDataList.add(new DragItem(i * 7 + 1, "Butterfly", R.mipmap.butterfly));
+        mDataList.add(new DragItem(i * 7 + 2, "Camel", R.mipmap.camel));
+        mDataList.add(new DragItem(i * 7 + 3, "Crocodile", R.mipmap.crocodile));
+        mDataList.add(new DragItem(i * 7 + 4, "Froggy", R.mipmap.froggy));
+        mDataList.add(new DragItem(i * 7 + 5, "Giraffe", R.mipmap.giraffe));
+        mDataList.add(new DragItem(i * 7 + 6, "Kitten", R.mipmap.kitten));
+        mDataList.add(new DragItem(i * 7 + 7, "Lion", R.mipmap.lion));
+        mDataList.add(new DragItem(i * 7 + 8, "Monkey", R.mipmap.monkey));
+        mDataList.add(new DragItem(i * 7 + 9, "Panda", R.mipmap.panda));
+        mDataList.add(new DragItem(i * 7 + 10, "Tiger", R.mipmap.tiger));
+        mDataList.add(new DragItem(i * 7 + 12, "Turtle", R.mipmap.turtle));
       }
       Collections.shuffle(mDataList);
     }
@@ -68,7 +72,9 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return new RecyclerView(container.getContext());
+    RecyclerView view = new RecyclerView(container.getContext());
+    view.setBackgroundColor(Color.GRAY);
+    return view;
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -86,7 +92,7 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
     itemTouchHelper.attachToRecyclerView(recyclerView);
     recyclerView.addOnItemTouchListener(new DragItemClickListener(recyclerView) {
       @Override public void onLongClick(RecyclerView.ViewHolder vh) {
-        if (vh.getLayoutPosition() != mDataList.size() - 1) {
+        if (vh.getLayoutPosition() < mDataList.size()) {
           itemTouchHelper.startDrag(vh);
           VibratorUtil.Vibrate(getActivity(), 100);   //震动70ms
         }

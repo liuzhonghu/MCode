@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
@@ -29,6 +30,20 @@ public class DragItemTouchCallback extends ItemTouchHelper.Callback {
       final int dragFlags =
           ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
       final int swipeFlags = 0;
+      return makeMovementFlags(dragFlags, swipeFlags);
+    } else if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
+      int dragFlags;
+      int swipeFlags;
+      int orientation = ((LinearLayoutManager) recyclerView.getLayoutManager()).getOrientation();
+      if (orientation == LinearLayoutManager.HORIZONTAL) {
+        dragFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        swipeFlags = 0;
+      } else {
+        dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+        //final int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+        swipeFlags = 0;
+      }
+
       return makeMovementFlags(dragFlags, swipeFlags);
     } else {
       final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;

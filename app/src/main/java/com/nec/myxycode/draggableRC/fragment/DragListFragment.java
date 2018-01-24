@@ -1,5 +1,6 @@
-package com.nec.myxycode.draggableRC;
+package com.nec.myxycode.draggableRC.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.nec.myxycode.R;
+import com.nec.myxycode.draggableRC.adapter.DragItem;
+import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
 import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
 import com.nec.myxycode.util.VibratorUtil;
@@ -23,6 +26,8 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class DragListFragment extends Fragment {
+  private boolean isVertical = true;
+  private static final String ARG_PARAM1 = "param1";
   private List<DragItem> mDataList = new ArrayList<DragItem>();
 
   public DragListFragment() {
@@ -35,8 +40,12 @@ public class DragListFragment extends Fragment {
    *
    * @return A new instance of fragment DragListFragment.
    */
-  public static DragListFragment newInstance() {
-    return new DragListFragment();
+  public static DragListFragment newInstance(boolean isVertical) {
+    DragListFragment fragment = new DragListFragment();
+    Bundle args = new Bundle();
+    args.putBoolean(ARG_PARAM1, isVertical);
+    fragment.setArguments(args);
+    return fragment;
   }
 
   @Override public void onCreate(Bundle savedInstanceState) {
@@ -56,29 +65,36 @@ public class DragListFragment extends Fragment {
       mDataList.add(new DragItem(i * 8 + 12, "Turtle", R.mipmap.turtle));
     }
     Collections.shuffle(mDataList);
+
+    isVertical = getArguments().getBoolean(ARG_PARAM1, true);
   }
 
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return new RecyclerView(container.getContext());
+    RecyclerView view = new RecyclerView(container.getContext());
+    view.setBackgroundColor(Color.GRAY);
+    return view;
   }
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    DragRecyclerAdapter adapter =
-        new DragRecyclerAdapter(this.getContext(), mDataList, R.layout.drag_item_list);
+    DragRecyclerAdapter adapter = new DragRecyclerAdapter(this.getContext(), mDataList,
+        isVertical ? R.layout.drag_item_vertical_list : R.layout.drag_item_horizontal_list);
     RecyclerView recyclerView = (RecyclerView) view;
     recyclerView.setHasFixedSize(true);
     recyclerView.setAdapter(adapter);
-    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
+        isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL, false);
+    recyclerView.setLayoutManager(layoutManager);
 
     final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new DragItemTouchCallback(adapter));
     itemTouchHelper.attachToRecyclerView(recyclerView);
     recyclerView.addOnItemTouchListener(new DragItemClickListener(recyclerView) {
       @Override public void onLongClick(RecyclerView.ViewHolder vh) {
-        if (vh.getLayoutPosition() != mDataList.size() - 1) {
+        if (vh.getLayoutPosition() < mDataList.size()) {
           itemTouchHelper.startDrag(vh);
           VibratorUtil.Vibrate(getActivity(), 100);   //震动70ms
         }
