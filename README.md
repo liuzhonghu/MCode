@@ -31,7 +31,10 @@ MultiScrollNumber具体使用方法见ScrollNumberActivity.java
 ```java
 封装了一个库,fpsactorlib,具体使用方法见FPSActor,java
 ```
-
+***可拖曳RecyclerView***
+```java
+利用谷歌提供的ItemTouchHelper实现RecyclerView的拖曳及滑动效果
+```
 #后续继续更新相关高价值Project...
 #Loading...
 
