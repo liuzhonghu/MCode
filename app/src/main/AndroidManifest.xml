@@ -3,6 +3,7 @@
     package="com.nec.myxycode">
 
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
   <application
@@ -63,6 +64,8 @@
     <activity android:name=".matrix.RectToRectActivity">
     </activity>
     <activity android:name=".fpsactor.FPSActorActivity">
+    </activity>
+    <activity android:name=".draggableRC.DraggableRCActivity">
     </activity>
   </application>
 
