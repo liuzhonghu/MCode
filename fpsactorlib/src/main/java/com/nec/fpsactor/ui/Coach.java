@@ -16,6 +16,7 @@ import com.nec.fpsactor.FPSConfig;
 import com.nec.fpsactor.R;
 import java.util.AbstractMap;
 import java.util.List;
+
 /**
  * @author Elijah <a href="zhonghu.liu@quvideo.com">Contact me.</a>
  * @desc
@@ -45,7 +46,7 @@ public class Coach {
     meterView = LayoutInflater.from(context).inflate(R.layout.meter_view, null);
 
     //set initial fps value....might change...
-    ((TextView) meterView).setText((int) fpsConfig.refreshRate + "");
+    ((TextView) meterView).setText(String.valueOf(fpsConfig.refreshRate));
 
     // grab window manager and add view to the window
     windowManager = (WindowManager) meterView.getContext().getSystemService(Service.WINDOW_SERVICE);
@@ -107,7 +108,7 @@ public class Coach {
       meterView.setBackgroundResource(R.drawable.fpsmeterring_good);
     }
 
-    ((TextView) meterView).setText(answer.getValue() + "");
+    ((TextView) meterView).setText(String.valueOf(answer.getValue()));
   }
 
   public void destroy() {

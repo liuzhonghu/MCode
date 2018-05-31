@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" filepath="$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/kboardlib/kboardlib.iml" filepath="$PROJECT_DIR$/kboardlib/kboardlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/structure/structure.iml" filepath="$PROJECT_DIR$/structure/structure.iml" />
     </modules>
   </component>
 </project>

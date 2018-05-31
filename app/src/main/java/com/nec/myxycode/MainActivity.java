@@ -15,6 +15,7 @@ import com.nec.myxycode.pop.PopShowActivity;
 import com.nec.myxycode.progressbar.ProgressBarActivity;
 import com.nec.myxycode.scrollnumber.ScrollNumberActivity;
 import com.nec.myxycode.sketch.SketchActivity;
+import com.nec.structure.StructureActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
   public void draggableRCView(View view) {
     Pop.show(findViewById(R.id.btn_drag_rc));
     this.startActivity(new Intent(this, DraggableRCActivity.class));
+  }
+
+  public void structure(View view) {
+    Pop.show(findViewById(R.id.btn_structure));
+    this.startActivity(new Intent(this, StructureActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/fpsactorlib" />
             <option value="$PROJECT_DIR$/kboardlib" />
+            <option value="$PROJECT_DIR$/structure" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

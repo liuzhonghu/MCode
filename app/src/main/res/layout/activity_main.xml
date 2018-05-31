@@ -91,6 +91,15 @@
         android:text="DRAGGABLERCVIEW"
         />
 
+    <Button
+        android:id="@+id/btn_structure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="structure"
+        android:text="STRUCTURE"
+        />
+
   </LinearLayout>
 
 </ScrollView>
