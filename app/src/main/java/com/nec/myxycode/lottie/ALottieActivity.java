@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.nec.myxycode.R;
-import com.nec.myxycode.pop.Pop;
+import com.nec.baselib.pop.Pop;
 
 public class ALottieActivity extends AppCompatActivity implements View.OnClickListener {
 

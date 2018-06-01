@@ -1,4 +1,4 @@
-package com.nec.myxycode.util;
+package com.nec.baselib.util;
 
 import android.app.Activity;
 import android.app.Service;

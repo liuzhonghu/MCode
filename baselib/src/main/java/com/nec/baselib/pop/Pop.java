@@ -1,4 +1,4 @@
-package com.nec.myxycode.pop;
+package com.nec.baselib.pop;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;

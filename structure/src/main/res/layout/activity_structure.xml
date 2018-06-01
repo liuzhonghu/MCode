@@ -12,18 +12,26 @@
 
 
   <Button
+      android:id="@+id/mvc"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:onClick="mvc"
       android:text="MVC"
       />
   <Button
+      android:id="@+id/mvp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="mvp"
       android:text="MVP"
       />
   <Button
+      android:id="@+id/mvvm"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginTop="30dp"
+      android:onClick="mvvm"
       android:text="MVVM"
       />
 </LinearLayout>

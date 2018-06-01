@@ -24,7 +24,7 @@
       </intent-filter>
     </activity>
     <activity
-        android:name=".pop.PopShowActivity"
+        android:name=".popshow.PopShowActivity"
         android:screenOrientation="portrait">
     </activity>
     <activity

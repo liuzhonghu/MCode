@@ -1,1 +1,1 @@
-include ':app', ':kboardlib', ':fpsactorlib', ':structure'
+include ':app', ':kboardlib', ':fpsactorlib', ':structure', ':baselib'

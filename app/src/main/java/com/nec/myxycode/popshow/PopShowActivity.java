@@ -1,9 +1,10 @@
-package com.nec.myxycode.pop;
+package com.nec.myxycode.popshow;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import com.nec.baselib.pop.Pop;
 import com.nec.myxycode.R;
 
 public class PopShowActivity extends AppCompatActivity implements View.OnClickListener {

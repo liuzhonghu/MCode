@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.nec.myxycode.R;
 import com.nec.myxycode.matrix.widget.TransformMatrixView;
-import com.nec.myxycode.pop.Pop;
+import com.nec.baselib.pop.Pop;
 
 public class MatrixBaseActivity extends AppCompatActivity implements View.OnClickListener {
 

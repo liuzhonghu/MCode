@@ -1,6 +1,6 @@
 package com.nec.myxycode;
 
-import android.app.Application;
+import com.nec.baselib.ApplicationBase;
 
 /**
  * @author Elijah <a href="zhonghu.liu@quvideo.com">Contact me.</a>
@@ -8,7 +8,7 @@ import android.app.Application;
  * @since 2018/1/10
  */
 
-public class KApplication extends Application {
+public class KApplication extends ApplicationBase {
   private AppComponent component;
 
   @Override public void onCreate() {

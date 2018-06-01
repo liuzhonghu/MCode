@@ -1,4 +1,4 @@
-package com.nec.myxycode.util;
+package com.nec.baselib.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -156,7 +156,9 @@ public class ACache {
    */
   public String getAsString(String key) {
     File file = mCache.get(key);
-    if (!file.exists()) return null;
+    if (!file.exists()) {
+      return null;
+    }
     boolean removeFile = false;
     BufferedReader in = null;
     try {
@@ -183,7 +185,9 @@ public class ACache {
           e.printStackTrace();
         }
       }
-      if (removeFile) remove(key);
+      if (removeFile) {
+        remove(key);
+      }
     }
   }
 
@@ -318,7 +322,9 @@ public class ACache {
    */
   public InputStream get(String key) throws FileNotFoundException {
     File file = mCache.get(key);
-    if (!file.exists()) return null;
+    if (!file.exists()) {
+      return null;
+    }
     return new FileInputStream(file);
   }
 
@@ -343,7 +349,9 @@ public class ACache {
     boolean removeFile = false;
     try {
       File file = mCache.get(key);
-      if (!file.exists()) return null;
+      if (!file.exists()) {
+        return null;
+      }
       RAFile = new RandomAccessFile(file, "r");
       byte[] byteArray = new byte[(int) RAFile.length()];
       RAFile.read(byteArray);
@@ -364,7 +372,9 @@ public class ACache {
           e.printStackTrace();
         }
       }
-      if (removeFile) remove(key);
+      if (removeFile) {
+        remove(key);
+      }
     }
   }
 
@@ -432,12 +442,16 @@ public class ACache {
         return null;
       } finally {
         try {
-          if (bais != null) bais.close();
+          if (bais != null) {
+            bais.close();
+          }
         } catch (IOException e) {
           e.printStackTrace();
         }
         try {
-          if (ois != null) ois.close();
+          if (ois != null) {
+            ois.close();
+          }
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -527,7 +541,9 @@ public class ACache {
    */
   public File file(String key) {
     File f = mCache.newFile(key);
-    if (f.exists()) return f;
+    if (f.exists()) {
+      return f;
+    }
     return null;
   }
 
@@ -769,7 +785,9 @@ public class ACache {
 
     private static byte[] copyOfRange(byte[] original, int from, int to) {
       int newLength = to - from;
-      if (newLength < 0) throw new IllegalArgumentException(from + " > " + to);
+      if (newLength < 0) {
+        throw new IllegalArgumentException(from + " > " + to);
+      }
       byte[] copy = new byte[newLength];
       System.arraycopy(original, from, copy, 0, Math.min(original.length - from, newLength));
       return copy;

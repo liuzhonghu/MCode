@@ -15,7 +15,7 @@ import com.nec.myxycode.draggableRC.adapter.DragItem;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
 import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
-import com.nec.myxycode.util.VibratorUtil;
+import com.nec.baselib.util.VibratorUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
