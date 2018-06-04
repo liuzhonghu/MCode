@@ -1,9 +1,7 @@
 package com.nec.myxycode.fpsactor;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.SeekBar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -57,12 +55,11 @@ public class FPSActorActivity extends AppCompatActivity {
   }
 
   @OnClick(R.id.stop) public void stop() {
-    FPSActor.hide((Application) getApplicationContext());
+    FPSActor.hide(getApplicationContext());
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
     component = null;
-    ButterKnife.unbind(this);
   }
 }
