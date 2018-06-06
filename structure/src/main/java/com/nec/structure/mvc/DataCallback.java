@@ -1,4 +1,6 @@
-package com.nec.structure.data;
+package com.nec.structure.mvc;
+
+import com.nec.structure.data.StructureData;
 
 /**
  * @author Elijah <a href="https://github.com/liuzhonghu">Contact me.</a>

@@ -32,5 +32,7 @@ dependencies {
   compile deps.appcompatv7
   compile deps.supportV4
   compile deps.supportConstraint
+  compile deps.recyclerviewv7
+  compile deps.supportDesign
   compile project(path: ':baselib')
 }
