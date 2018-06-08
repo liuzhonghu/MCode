@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.nec.baselib.NormalItem;
 import com.nec.myxycode.R;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ import java.util.List;
 public class DragRecyclerAdapter extends RecyclerView.Adapter<DragRecyclerAdapter.MyViewHolder>
     implements DragItemTouchCallback.ItemTouchAdapter {
   private Context context;
-  private List<DragItem> dataList = new ArrayList<>();
+  private List<NormalItem> dataList = new ArrayList<>();
   private int itemLayoutID;
 
-  public DragRecyclerAdapter(Context context, List<DragItem> dataList, int itemLayoutID) {
+  public DragRecyclerAdapter(Context context, List<NormalItem> dataList, int itemLayoutID) {
     this.context = context;
     this.dataList = dataList;
     this.itemLayoutID = itemLayoutID;

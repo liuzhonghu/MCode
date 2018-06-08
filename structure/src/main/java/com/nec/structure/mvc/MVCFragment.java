@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.nec.baselib.pop.Pop;
+import com.nec.baselib.util.LoadingDialog;
 import com.nec.structure.BaseFragment;
 import com.nec.structure.R;
 
@@ -99,7 +100,9 @@ public class MVCFragment extends BaseFragment {
       Toast.makeText(getContext(), "请输入幸运数", Toast.LENGTH_SHORT).show();
       return;
     }
+    LoadingDialog.showLoadingProcess(getContext(), null);
     dataModel.getData(Integer.valueOf(content), data -> {
+      LoadingDialog.dismissModalProgressDialogue();
       if (data != null) {
         luckyCover.setImageResource(data.coverResId);
         luckyDesc.setText(data.desc);

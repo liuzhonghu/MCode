@@ -1,19 +1,19 @@
-package com.nec.myxycode.draggableRC.adapter;
+package com.nec.baselib;
 
 import java.io.Serializable;
 
-public class DragItem implements Serializable {
+public class NormalItem implements Serializable {
   private int id;
   private String name;
   private int img;
 
-  public DragItem(int id, String name, int img) {
+  public NormalItem(int id, String name, int img) {
     this.id = id;
     this.name = name;
     this.img = img;
   }
 
-  public DragItem(String name, int img) {
+  public NormalItem(String name, int img) {
     this.name = name;
     this.img = img;
   }

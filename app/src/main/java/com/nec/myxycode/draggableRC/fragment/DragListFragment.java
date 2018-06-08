@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.nec.myxycode.R;
-import com.nec.myxycode.draggableRC.adapter.DragItem;
+import com.nec.baselib.NormalItem;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
 import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
@@ -28,7 +28,7 @@ import java.util.List;
 public class DragListFragment extends Fragment {
   private boolean isVertical = true;
   private static final String ARG_PARAM1 = "param1";
-  private List<DragItem> mDataList = new ArrayList<DragItem>();
+  private List<NormalItem> mDataList = new ArrayList<NormalItem>();
 
   public DragListFragment() {
     // Required empty public constructor
@@ -51,18 +51,18 @@ public class DragListFragment extends Fragment {
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     for (int i = 0; i < 3; i++) {
-      mDataList.add(new DragItem(i * 8, "Brown_cow", R.mipmap.brown_cow));
-      mDataList.add(new DragItem(i * 8 + 1, "Butterfly", R.mipmap.butterfly));
-      mDataList.add(new DragItem(i * 8 + 2, "Camel", R.mipmap.camel));
-      mDataList.add(new DragItem(i * 8 + 3, "Crocodile", R.mipmap.crocodile));
-      mDataList.add(new DragItem(i * 8 + 4, "Froggy", R.mipmap.froggy));
-      mDataList.add(new DragItem(i * 8 + 5, "Giraffe", R.mipmap.giraffe));
-      mDataList.add(new DragItem(i * 8 + 6, "Kitten", R.mipmap.kitten));
-      mDataList.add(new DragItem(i * 8 + 7, "Lion", R.mipmap.lion));
-      mDataList.add(new DragItem(i * 8 + 8, "Monkey", R.mipmap.monkey));
-      mDataList.add(new DragItem(i * 8 + 9, "Panda", R.mipmap.panda));
-      mDataList.add(new DragItem(i * 8 + 10, "Tiger", R.mipmap.tiger));
-      mDataList.add(new DragItem(i * 8 + 12, "Turtle", R.mipmap.turtle));
+      mDataList.add(new NormalItem(i * 8, "Brown_cow", R.drawable.brown_cow));
+      mDataList.add(new NormalItem(i * 8 + 1, "Butterfly", R.drawable.butterfly));
+      mDataList.add(new NormalItem(i * 8 + 2, "Camel", R.drawable.camel));
+      mDataList.add(new NormalItem(i * 8 + 3, "Crocodile", R.drawable.crocodile));
+      mDataList.add(new NormalItem(i * 8 + 4, "Froggy", R.drawable.froggy));
+      mDataList.add(new NormalItem(i * 8 + 5, "Giraffe", R.drawable.giraffe));
+      mDataList.add(new NormalItem(i * 8 + 6, "Kitten", R.drawable.kitten));
+      mDataList.add(new NormalItem(i * 8 + 7, "Lion", R.drawable.lion));
+      mDataList.add(new NormalItem(i * 8 + 8, "Monkey", R.drawable.monkey));
+      mDataList.add(new NormalItem(i * 8 + 9, "Panda", R.drawable.panda));
+      mDataList.add(new NormalItem(i * 8 + 10, "Tiger", R.drawable.tiger));
+      mDataList.add(new NormalItem(i * 8 + 12, "Turtle", R.drawable.turtle));
     }
     Collections.shuffle(mDataList);
 

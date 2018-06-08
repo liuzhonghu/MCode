@@ -41,7 +41,8 @@ public class PolyToPolyView extends View {
   }
 
   private void initBitmapAndMatrix() {
-    mBitmap = BitmapUtils.decodeSampleBitMapFromResource(getContext(), R.mipmap.beauty2, 600, 600);
+    mBitmap =
+        BitmapUtils.decodeSampleBitMapFromResource(getContext(), R.drawable.beauty2, 600, 600);
 
     float[] temp = {
         0, 0,                                    // 左上

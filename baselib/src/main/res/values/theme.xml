@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="MAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <!-- Used for the buttons -->
+    <item name="colorAccent">#00b300</item>
+    <!-- Used for the title and text -->
+    <item name="android:textColorPrimary">#3493f2</item>
+    <!-- Used for the background -->
+    <item name="android:background">@android:color/transparent</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+  </style>
+</resources>

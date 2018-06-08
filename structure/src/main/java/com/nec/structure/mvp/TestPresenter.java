@@ -1,6 +1,8 @@
 package com.nec.structure.mvp;
 
+import com.nec.baselib.NormalItem;
 import com.nec.structure.mvp.base.BasePresenter;
+import java.util.List;
 
 /**
  * @author Elijah <a href="https://github.com/liuzhonghu">Contact me.</a>
@@ -9,11 +11,27 @@ import com.nec.structure.mvp.base.BasePresenter;
  */
 public class TestPresenter extends BasePresenter<ITestView> {
 
+  MvpViewModel viewModel;
+
   @Override public void attachView(ITestView mvpView) {
     super.attachView(mvpView);
   }
 
   @Override public void detachView() {
     super.detachView();
+  }
+
+  public void init() {
+    viewModel = new MvpViewModel();
+  }
+
+  public void getAnimals() {
+    if (viewModel != null) {
+      viewModel.getAnimalData(new MvpDataCallback() {
+        @Override public void onResult(List<NormalItem> list) {
+          getMvpView().onAnimalResult(list);
+        }
+      });
+    }
   }
 }

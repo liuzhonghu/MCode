@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import com.nec.myxycode.R;
 import com.nec.myxycode.draggableRC.adapter.DividerGridItemDecoration;
-import com.nec.myxycode.draggableRC.adapter.DragItem;
+import com.nec.baselib.NormalItem;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
 import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
 import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
@@ -28,7 +28,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class DragGridFragment extends Fragment implements DragItemTouchCallback.OnDragListener {
-  private List<DragItem> mDataList = new ArrayList<DragItem>();
+  private List<NormalItem> mDataList = new ArrayList<NormalItem>();
 
   public DragGridFragment() {
     // Required empty public constructor
@@ -47,23 +47,23 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    ArrayList<DragItem> items = (ArrayList<DragItem>) ACache.get(getContext()).getAsObject("items");
+    ArrayList<NormalItem> items = (ArrayList<NormalItem>) ACache.get(getContext()).getAsObject("items");
     if (items != null) {
       mDataList.addAll(items);
     } else {
       for (int i = 0; i < 3; i++) {
-        mDataList.add(new DragItem(i * 7, "Brown_cow", R.mipmap.brown_cow));
-        mDataList.add(new DragItem(i * 7 + 1, "Butterfly", R.mipmap.butterfly));
-        mDataList.add(new DragItem(i * 7 + 2, "Camel", R.mipmap.camel));
-        mDataList.add(new DragItem(i * 7 + 3, "Crocodile", R.mipmap.crocodile));
-        mDataList.add(new DragItem(i * 7 + 4, "Froggy", R.mipmap.froggy));
-        mDataList.add(new DragItem(i * 7 + 5, "Giraffe", R.mipmap.giraffe));
-        mDataList.add(new DragItem(i * 7 + 6, "Kitten", R.mipmap.kitten));
-        mDataList.add(new DragItem(i * 7 + 7, "Lion", R.mipmap.lion));
-        mDataList.add(new DragItem(i * 7 + 8, "Monkey", R.mipmap.monkey));
-        mDataList.add(new DragItem(i * 7 + 9, "Panda", R.mipmap.panda));
-        mDataList.add(new DragItem(i * 7 + 10, "Tiger", R.mipmap.tiger));
-        mDataList.add(new DragItem(i * 7 + 12, "Turtle", R.mipmap.turtle));
+        mDataList.add(new NormalItem(i * 7, "Brown_cow", R.drawable.brown_cow));
+        mDataList.add(new NormalItem(i * 7 + 1, "Butterfly", R.drawable.butterfly));
+        mDataList.add(new NormalItem(i * 7 + 2, "Camel", R.drawable.camel));
+        mDataList.add(new NormalItem(i * 7 + 3, "Crocodile", R.drawable.crocodile));
+        mDataList.add(new NormalItem(i * 7 + 4, "Froggy", R.drawable.froggy));
+        mDataList.add(new NormalItem(i * 7 + 5, "Giraffe", R.drawable.giraffe));
+        mDataList.add(new NormalItem(i * 7 + 6, "Kitten", R.drawable.kitten));
+        mDataList.add(new NormalItem(i * 7 + 7, "Lion", R.drawable.lion));
+        mDataList.add(new NormalItem(i * 7 + 8, "Monkey", R.drawable.monkey));
+        mDataList.add(new NormalItem(i * 7 + 9, "Panda", R.drawable.panda));
+        mDataList.add(new NormalItem(i * 7 + 10, "Tiger", R.drawable.tiger));
+        mDataList.add(new NormalItem(i * 7 + 12, "Turtle", R.drawable.turtle));
       }
       Collections.shuffle(mDataList);
     }
@@ -99,7 +99,7 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
       }
 
       @Override public void onItemClick(RecyclerView.ViewHolder vh) {
-        DragItem item = mDataList.get(vh.getLayoutPosition());
+        NormalItem item = mDataList.get(vh.getLayoutPosition());
         Toast.makeText(getActivity(), item.getId() + " " + item.getName(), Toast.LENGTH_SHORT)
             .show();
       }
@@ -108,6 +108,6 @@ public class DragGridFragment extends Fragment implements DragItemTouchCallback.
 
   @Override public void onFinishDrag() {
     //存入缓存
-    ACache.get(getActivity()).put("items", (ArrayList<DragItem>) mDataList);
+    ACache.get(getActivity()).put("items", (ArrayList<NormalItem>) mDataList);
   }
 }
