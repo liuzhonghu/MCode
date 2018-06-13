@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
+  dataBinding {
+    enabled = true
+  }
+
   compileSdkVersion rootProject.ext.compileSdkVersion
   buildToolsVersion rootProject.ext.buildToolsVersion
   defaultConfig {
@@ -31,7 +34,7 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  apt 'com.google.dagger:dagger-compiler:2.8'
+  annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
   compile deps.appcompatv7
   compile deps.recyclerviewv7
   compile deps.supportConstraint
@@ -41,7 +44,6 @@ dependencies {
   compile deps.dagger
   compile deps.junit
   compile deps.lottie
-  compile deps.butterknife
   compile project(path: ':kboardlib')
   compile project(path: ':fpsactorlib')
   compile project(path: ':structure')

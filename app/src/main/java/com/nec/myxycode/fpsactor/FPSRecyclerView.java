@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import butterknife.ButterKnife;
 import com.nec.myxycode.KApplication;
 import javax.inject.Inject;
 
@@ -21,7 +20,6 @@ public class FPSRecyclerView extends RecyclerView {
 
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
-    ButterKnife.bind(this);
     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -32,7 +30,6 @@ public class FPSRecyclerView extends RecyclerView {
 
   @Override protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
-    ButterKnife.unbind(this);
   }
 
   public FPSRecyclerView(Context context, AttributeSet attrs, int defStyle) {

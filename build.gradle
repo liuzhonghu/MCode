@@ -10,7 +10,6 @@ buildscript {
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:2.3.3'
-    classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     classpath 'me.tatarka:gradle-retrolambda:3.2.0'
 
     // NOTE: Do not place your application dependencies here; they belong
@@ -71,7 +70,7 @@ ext.deps = [// compile
             dagger           : "com.google.dagger:dagger:${daggerVersion}",
             lottie           : "com.airbnb.android:lottie:$lottieVersion",
             // annotationProcessor
-            daggerCompiler   : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            annotationProcessor   : "com.google.dagger:dagger-compiler:${daggerVersion}",
             rxjava           : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
             rxAndroid        : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             // provided

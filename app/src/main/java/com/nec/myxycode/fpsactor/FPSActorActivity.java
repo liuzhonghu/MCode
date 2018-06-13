@@ -2,18 +2,17 @@ package com.nec.myxycode.fpsactor;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.SeekBar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.nec.baselib.pop.Pop;
 import com.nec.fpsactor.FPSActor;
 import com.nec.myxycode.AppComponent;
 import com.nec.myxycode.KApplication;
 import com.nec.myxycode.R;
 
 public class FPSActorActivity extends AppCompatActivity {
-  @Bind(R.id.recyclerView) FPSRecyclerView recyclerView;
-  @Bind(R.id.loadIndicator) SeekBar loadIndicator;
+  FPSRecyclerView recyclerView;
+  SeekBar loadIndicator;
 
   private AppComponent component;
 
@@ -21,10 +20,12 @@ public class FPSActorActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_fps_actor);
 
+    recyclerView = findViewById(R.id.recyclerView);
+    loadIndicator = findViewById(R.id.loadIndicator);
+
     KApplication application = (KApplication) getApplication();
     component = application.getComponent();
     component.inject(this);
-    ButterKnife.bind(this);
 
     setupRadioGroup();
     FPSActor.create().show(getApplicationContext());
@@ -50,11 +51,13 @@ public class FPSActorActivity extends AppCompatActivity {
     });
   }
 
-  @OnClick(R.id.start) public void start() {
+  public void start(View view) {
+    Pop.show(view);
     FPSActor.create().show(getApplicationContext());
   }
 
-  @OnClick(R.id.stop) public void stop() {
+  public void stop(View view) {
+    Pop.show(view);
     FPSActor.hide(getApplicationContext());
   }
 
