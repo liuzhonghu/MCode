@@ -36,7 +36,6 @@
         imageUrl="@{simpleNewsBean.thumbnail}"
         />
 
-    <!--标题-->
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
@@ -48,7 +47,6 @@
         android:textSize="16sp"
         />
 
-    <!--描述-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
         android:textSize="14sp"
         />
 
-    <!--点赞或者取消点赞,onClick()用的lambda表达式-->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,6 +65,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="8dp"
         android:onClick="@{()->adapter.clickDianZan(simpleNewsBean,position)}"
+        app:resId="@{simpleNewsBean.isGood ? R.drawable.dianzan_press : R.drawable.dianzan_normal }"
         />
 
   </RelativeLayout>

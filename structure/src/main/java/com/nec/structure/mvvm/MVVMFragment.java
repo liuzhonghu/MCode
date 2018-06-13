@@ -10,7 +10,7 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.nec.structure.BaseFragment;
 import com.nec.structure.R;
-import com.nec.structure.databinding.FragmentMvvmBinding;
+import com.nec.structure.databinding.MVVMDataBinding;
 import com.nec.structure.mvvm.adapter.NewsAdapter;
 import com.nec.structure.mvvm.helper.DialogHelper;
 import com.nec.structure.mvvm.utils.ToastUtils;
@@ -46,7 +46,7 @@ import static com.nec.structure.mvvm.constant.MainConstant.LoadData.FIRST_LOAD;
  */
 public class MVVMFragment extends BaseFragment implements INewsView, XRecyclerView.LoadingListener {
 
-  private FragmentMvvmBinding binding;
+  private MVVMDataBinding binding;
   private NewsAdapter newsAdapter;
   private NewsVM newsVM;
 

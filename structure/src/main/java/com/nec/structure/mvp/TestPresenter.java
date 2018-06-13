@@ -27,11 +27,7 @@ public class TestPresenter extends BasePresenter<ITestView> {
 
   public void getAnimals() {
     if (viewModel != null) {
-      viewModel.getAnimalData(new MvpDataCallback() {
-        @Override public void onResult(List<NormalItem> list) {
-          getMvpView().onAnimalResult(list);
-        }
-      });
+      viewModel.getAnimalData(list -> getMvpView().onAnimalResult(list));
     }
   }
 }

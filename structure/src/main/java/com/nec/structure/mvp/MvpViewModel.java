@@ -25,11 +25,9 @@ public class MvpViewModel {
   }
 
   public void getAnimalData(MvpDataCallback callback) {
-    Observable.create(new ObservableOnSubscribe<List<NormalItem>>() {
-      @Override public void subscribe(ObservableEmitter<List<NormalItem>> e) throws Exception {
-        List<NormalItem> animals = createAnimals();
-        e.onNext(animals);
-      }
+    Observable.create((ObservableOnSubscribe<List<NormalItem>>) e -> {
+      List<NormalItem> animals = createAnimals();
+      e.onNext(animals);
     })
         .subscribeOn(Schedulers.io())
         .delay(3000, TimeUnit.MILLISECONDS)

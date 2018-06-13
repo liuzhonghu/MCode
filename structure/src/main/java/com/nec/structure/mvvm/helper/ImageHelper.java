@@ -17,7 +17,7 @@ public class ImageHelper {
   }
 
   /**
-   * mv_vm xml 设置 mipmap Resource
+   * mv_vm xml 设置  Resource
    *
    * @param iv imageView
    * @param resId resource id
