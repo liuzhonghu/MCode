@@ -65,11 +65,9 @@ public class NewsModelImpl implements INewsModel {
 
           @Override public void onComplete() {
             Log.i(TAG, "onComplete: ");
-            new Handler().postDelayed(new Runnable() {
-              @Override public void run() {
-                loadListener.loadSuccess(simpleNewsBeanList);
-                loadListener.loadComplete();
-              }
+            new Handler().postDelayed(() -> {
+              loadListener.loadSuccess(simpleNewsBeanList);
+              loadListener.loadComplete();
             }, 2000);
           }
         });

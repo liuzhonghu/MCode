@@ -39,10 +39,21 @@ import static com.nec.structure.mvvm.constant.MainConstant.LoadData.FIRST_LOAD;
  * mvvm的缺点数据绑定使得 Bug 很难被调试。你看到界面异常了，有可能是你 View 的代码有 Bug，也可能是 Model 的代码有问题。
  * 数据绑定使得一个位置的 Bug 被快速传递到别的位置，要定位原始出问题的地方就变得不那么容易了。
  *
+ * 与 MVP模式不同的是:
+ * VM与 V 之间是通过 Datebinding 实现的，而 P是持有 View 的对象，直接调用 View 中的一些接口方法来实现。
+ * ViewModel可以理解成是View的数据模型和Presenter的合体,它通过双向绑定(松耦合)解决了MVP中Presenter与View联系比较紧密的问题
+ * 然而,目前Android中的Datebingding只能单向绑定，只能从ViewModel绑定到View中!
+ *
  * PS: 通常情况下，数据的流向是单方面的，只能从代码流向UI，也就是单向绑定；
  * 而双向绑定的数据流向是双向的，当业务代码中的数据改变时，UI上的数据能够得到刷新；
  * 当用户通过UI交互编辑了数据时，数据的变化也能自动的更新到业务代码中的数据上。
  * 而DataBinding是一个实现数据和UI绑定的框架，是构建MVVM模式的一个关键的工具，它是支持双向绑定的。
+ *
+ *
+ * 工作原理和我们Android中的Adapter有些类似，可以这样想象一下，在使用RecyclerView时，Adapter扮演ViewModel的角色，
+ * RecyclerView当然是View的角色、数据集合则是Model的角色，当数据集发生变化时，我们会调用Adapter类的notifyXXX()方法，
+ * RecyclerView列表就会得到更新，如果RecyclerView列表是可编辑的，例如删除Item等，这些操作也是会影响原始数据集的。
+ * 所以ViewModel就是View和Model之间沟通的桥梁，解决了View和Model之间的耦合问题，让操作变得更加灵活、方便。
  */
 public class MVVMFragment extends BaseFragment implements INewsView, XRecyclerView.LoadingListener {
 

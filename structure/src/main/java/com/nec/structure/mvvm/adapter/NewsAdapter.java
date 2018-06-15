@@ -28,7 +28,7 @@ public class NewsAdapter extends BaseAdapter<SimpleNewsBean, BaseViewHolder> {
     binding.setVariable(BR.simpleNewsBean, mList.get(position));
     binding.setVariable(BR.position, position);
     binding.setVariable(BR.adapter, this);
-    binding.executePendingBindings(); //防止闪烁
+    binding.executePendingBindings();
   }
 
   /**
