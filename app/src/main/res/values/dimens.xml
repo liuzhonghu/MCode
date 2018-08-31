@@ -4,4 +4,7 @@
   <dimen name="activity_horizontal_margin">16dp</dimen>
   <dimen name="activity_vertical_margin">16dp</dimen>
   <dimen name="textSize">12dp</dimen>
+
+  <dimen name="small_margin_size_3">3dp</dimen>
+  <dimen name="chat_recyclerview_height">240dp</dimen>
 </resources>

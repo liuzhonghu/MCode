@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.nec.baselib.pop.Pop;
+import com.nec.myxycode.chat.ChatActivity;
 import com.nec.myxycode.draggableRC.DraggableRCActivity;
 import com.nec.myxycode.fpsactor.FPSActorActivity;
 import com.nec.myxycode.lottie.ALottieActivity;
 import com.nec.myxycode.matrix.MatrixActivity;
-import com.nec.baselib.pop.Pop;
 import com.nec.myxycode.popshow.PopShowActivity;
 import com.nec.myxycode.progressbar.ProgressBarActivity;
 import com.nec.myxycode.scrollnumber.ScrollNumberActivity;
@@ -67,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
   public void structure(View view) {
     Pop.show(findViewById(R.id.btn_structure));
     this.startActivity(new Intent(this, StructureActivity.class));
+  }
+
+  public void chat(View view) {
+    Pop.show(findViewById(R.id.btn_chat));
+    this.startActivity(new Intent(this, ChatActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

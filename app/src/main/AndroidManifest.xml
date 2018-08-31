@@ -67,6 +67,8 @@
     </activity>
     <activity android:name=".draggableRC.DraggableRCActivity">
     </activity>
+    <activity android:name=".chat.ChatActivity">
+    </activity>
   </application>
 
 </manifest>
