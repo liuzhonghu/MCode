@@ -42,6 +42,10 @@ MultiScrollNumber具体使用方法见ScrollNumberActivity.java
 ```java
 MVC MVP MVVM三种安卓架构的分析及示例
 ```
+
+```java
+仿直播聊天室,消息平滑刷新实现
+```
 #后续继续更新相关高价值Project...
 #Loading...
 
