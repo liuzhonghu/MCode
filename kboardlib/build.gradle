@@ -28,10 +28,7 @@ android {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile deps.appcompatv7
-  compile deps.supportV4
-  compile deps.supportConstraint
-  compile deps.picasso
-  compile project(path: ':baselib')
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation deps.picasso
+  implementation project(path: ':baselib')
 }

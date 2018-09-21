@@ -109,6 +109,14 @@
         android:text="CHAT"
         />
 
+    <Button
+        android:id="@+id/btn_arch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="arch"
+        android:text="ARCHITECTURE"/>
+
   </LinearLayout>
 
 </ScrollView>

@@ -20,15 +20,42 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile deps.junit
-  compile deps.appcompatv7
-  compile deps.supportV4
-  compile deps.supportConstraint
+  api fileTree(include: ['*.jar'], dir: 'libs')
+  api deps.junit
+  api deps.appcompatv7
+  api deps.supportV4
+  api deps.supportConstraint
+  api deps.recyclerviewv7
+  api deps.supportDesign
 
-  compile deps.rxjava
-  compile deps.rxAndroid
+  api deps.rxjava
+  api deps.rxAndroid
+
+  api 'com.android.support:multidex:1.0.3'
+
+
+  // ViewModel and LiveData
+  api "android.arch.lifecycle:extensions:$rootProject.ext.lifecycleVersion"
+  // alternatively, just ViewModel
+  api "android.arch.lifecycle:viewmodel:$rootProject.ext.lifecycleVersion"
+  // alternatively, just LiveData
+  api "android.arch.lifecycle:livedata:$rootProject.ext.lifecycleVersion"
+
+  annotationProcessor "android.arch.lifecycle:compiler:$rootProject.ext.lifecycleVersion"
+
+  api "android.arch.lifecycle:runtime:$rootProject.ext.lifecycleVersion"
+
+  // Java8 support for Lifecycles
+//  api "android.arch.lifecycle:common-java8:$rootProject.ext.lifecycleVersion"
+
+  // Room (use 1.1.0-alpha1 for latest alpha)
+  api "android.arch.persistence.room:runtime:1.1.1"
+  annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 }

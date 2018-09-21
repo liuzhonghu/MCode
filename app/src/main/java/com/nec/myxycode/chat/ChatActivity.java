@@ -178,4 +178,12 @@ public class ChatActivity extends AppCompatActivity {
       }
     }
   }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    if (handler != null) {
+      handler.removeCallbacksAndMessages(null);
+      handler = null;
+    }
+  }
 }

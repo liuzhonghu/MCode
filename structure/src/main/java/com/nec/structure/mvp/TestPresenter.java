@@ -1,8 +1,6 @@
 package com.nec.structure.mvp;
 
-import com.nec.baselib.NormalItem;
-import com.nec.structure.mvp.base.BasePresenter;
-import java.util.List;
+import com.nec.baselib.BasePresenter;
 
 /**
  * @author Elijah <a href="https://github.com/liuzhonghu">Contact me.</a>

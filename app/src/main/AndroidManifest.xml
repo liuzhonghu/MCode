@@ -69,6 +69,8 @@
     </activity>
     <activity android:name=".chat.ChatActivity">
     </activity>
+    <activity android:name=".architecture.ArchitectureActivity">
+    </activity>
   </application>
 
 </manifest>

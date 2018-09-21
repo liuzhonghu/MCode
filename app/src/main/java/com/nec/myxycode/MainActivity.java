@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.nec.baselib.pop.Pop;
+import com.nec.myxycode.architecture.ArchitectureActivity;
 import com.nec.myxycode.chat.ChatActivity;
 import com.nec.myxycode.draggableRC.DraggableRCActivity;
 import com.nec.myxycode.fpsactor.FPSActorActivity;
@@ -73,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
   public void chat(View view) {
     Pop.show(findViewById(R.id.btn_chat));
     this.startActivity(new Intent(this, ChatActivity.class));
+  }
+
+  public void arch(View view) {
+    Pop.show(findViewById(R.id.btn_arch));
+    this.startActivity(new Intent(this, ArchitectureActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

@@ -15,6 +15,9 @@ android {
     versionCode 1
     versionName "1.0"
 
+    // Enabling multidex support.
+    multiDexEnabled true
+
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -30,23 +33,23 @@ android {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile 'com.android.support.constraint:constraint-layout:1.1.3'
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  api fileTree(include: ['*.jar'], dir: 'libs')
+  api 'com.android.support.constraint:constraint-layout:1.1.3'
+  androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
   annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
-  compile deps.appcompatv7
-  compile deps.recyclerviewv7
-  compile deps.supportConstraint
-  compile deps.supportDesign
-  compile deps.supportV4
-  compile deps.okhttp
-  compile deps.dagger
-  compile deps.junit
-  compile deps.lottie
-  compile project(path: ':kboardlib')
-  compile project(path: ':fpsactorlib')
-  compile project(path: ':structure')
-  compile project(path: ':baselib')
+  api deps.appcompatv7
+  api deps.recyclerviewv7
+  api deps.supportConstraint
+  api deps.supportDesign
+  api deps.supportV4
+  api deps.okhttp
+  api deps.dagger
+  api deps.junit
+  api deps.lottie
+  api project(path: ':kboardlib')
+  api project(path: ':fpsactorlib')
+  api project(path: ':structure')
+  api project(path: ':baselib')
 }

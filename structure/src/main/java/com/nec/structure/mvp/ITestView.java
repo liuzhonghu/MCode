@@ -1,7 +1,7 @@
 package com.nec.structure.mvp;
 
+import com.nec.baselib.MvpView;
 import com.nec.baselib.NormalItem;
-import com.nec.structure.mvp.base.MvpView;
 import java.util.List;
 
 /**
