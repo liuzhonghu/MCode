@@ -53,6 +53,7 @@ ext {
   okVersion = "3.5.0"
   lottieVersion = "2.1.0"
   lifecycleVersion = "1.1.1"
+  rxbindingVersion = "2.0.0"
 
   // POM file
   GROUP = "com.github.liuzhonghu"
@@ -60,23 +61,24 @@ ext {
 }
 
 ext.deps = [// compile
-            appcompatv7      : "com.android.support:appcompat-v7:${supportLibraryVersion}",
-            supportV4        : "com.android.support:support-v4:$supportLibraryVersion",
-            supportDesign    : "com.android.support:design:$supportLibraryVersion",
-            supportConstraint: "com.android.support.constraint:constraint-layout:$constraintVersion",
-            recyclerviewv7   : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-            butterknife      : "com.jakewharton:butterknife:${butterKnifeVersion}",
-            picasso          : "com.squareup.picasso:picasso:$picassoVersion",
-            okhttp           : "com.squareup.okhttp3:okhttp:$okVersion",
-            dagger           : "com.google.dagger:dagger:${daggerVersion}",
-            lottie           : "com.airbnb.android:lottie:$lottieVersion",
+            appcompatv7        : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            supportV4          : "com.android.support:support-v4:$supportLibraryVersion",
+            supportDesign      : "com.android.support:design:$supportLibraryVersion",
+            supportConstraint  : "com.android.support.constraint:constraint-layout:$constraintVersion",
+            recyclerviewv7     : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            butterknife        : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            picasso            : "com.squareup.picasso:picasso:$picassoVersion",
+            okhttp             : "com.squareup.okhttp3:okhttp:$okVersion",
+            dagger             : "com.google.dagger:dagger:${daggerVersion}",
+            lottie             : "com.airbnb.android:lottie:$lottieVersion",
             // annotationProcessor
-            annotationProcessor   : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            rxjava           : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
-            rxAndroid        : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            annotationProcessor: "com.google.dagger:dagger-compiler:${daggerVersion}",
+            rxjava             : "io.reactivex.rxjava2:rxjava:${rxjavaVersion}",
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxbinding          : "com.jakewharton.rxbinding2:rxbinding:${rxbindingVersion}",
             // provided
-            javaxAnnotation  : "org.glassfish:javax.annotation:10.0-b28",
+            javaxAnnotation    : "org.glassfish:javax.annotation:10.0-b28",
 
             // testCompile
-            junit            : "junit:junit:4.12",
-            assertJ          : "org.assertj:assertj-core:1.7.1"]
+            junit              : "junit:junit:4.12",
+            assertJ            : "org.assertj:assertj-core:1.7.1"]

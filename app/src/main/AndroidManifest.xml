@@ -71,6 +71,8 @@
     </activity>
     <activity android:name=".architecture.ArchitectureActivity">
     </activity>
+    <activity android:name=".rxbinding.RxBindingActivity">
+    </activity>
   </application>
 
 </manifest>

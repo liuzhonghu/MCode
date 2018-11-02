@@ -15,6 +15,7 @@ import com.nec.myxycode.lottie.ALottieActivity;
 import com.nec.myxycode.matrix.MatrixActivity;
 import com.nec.myxycode.popshow.PopShowActivity;
 import com.nec.myxycode.progressbar.ProgressBarActivity;
+import com.nec.myxycode.rxbinding.RxBindingActivity;
 import com.nec.myxycode.scrollnumber.ScrollNumberActivity;
 import com.nec.myxycode.sketch.SketchActivity;
 import com.nec.structure.StructureActivity;
@@ -79,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
   public void arch(View view) {
     Pop.show(findViewById(R.id.btn_arch));
     this.startActivity(new Intent(this, ArchitectureActivity.class));
+  }
+
+  public void rxbinding(View view) {
+    Pop.show(findViewById(R.id.btn_rxbinding));
+    this.startActivity(new Intent(this, RxBindingActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
