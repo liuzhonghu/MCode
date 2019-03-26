@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -16,9 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-/**
- * @author 765
- */
 public class CropperActivity extends AppCompatActivity {
 
   // Private Constants ///////////////////////////////////////////////////////////////////////////
@@ -34,26 +29,23 @@ public class CropperActivity extends AppCompatActivity {
     setContentView(R.layout.activity_cropper);
 
     // Initialize Views.
-    final ToggleButton fixedAspectRatioToggleButton =
-        (ToggleButton) findViewById(R.id.fixedAspectRatioToggle);
-    final TextView aspectRatioXTextView = (TextView) findViewById(R.id.aspectRatioX);
-    final SeekBar aspectRatioXSeekBar = (SeekBar) findViewById(R.id.aspectRatioXSeek);
-    final TextView aspectRatioYTextView = (TextView) findViewById(R.id.aspectRatioY);
-    final SeekBar aspectRatioYSeekBar = (SeekBar) findViewById(R.id.aspectRatioYSeek);
-    final Spinner guidelinesSpinner = (Spinner) findViewById(R.id.showGuidelinesSpin);
-    final CropImageView cropImageView = (CropImageView) findViewById(R.id.CropImageView);
-    final ImageView croppedImageView = (ImageView) findViewById(R.id.croppedImageView);
-    final Button cropButton = (Button) findViewById(R.id.Button_crop);
+    final ToggleButton fixedAspectRatioToggleButton = findViewById(R.id.fixedAspectRatioToggle);
+    final TextView aspectRatioXTextView = findViewById(R.id.aspectRatioX);
+    final SeekBar aspectRatioXSeekBar = findViewById(R.id.aspectRatioXSeek);
+    final TextView aspectRatioYTextView = findViewById(R.id.aspectRatioY);
+    final SeekBar aspectRatioYSeekBar = findViewById(R.id.aspectRatioYSeek);
+    final Spinner guidelinesSpinner = findViewById(R.id.showGuidelinesSpin);
+    final CropImageView cropImageView = findViewById(R.id.CropImageView);
+    final ImageView croppedImageView = findViewById(R.id.croppedImageView);
+    final Button cropButton = findViewById(R.id.Button_crop);
 
     // Initializes fixedAspectRatio toggle button.
-    fixedAspectRatioToggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-      @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        cropImageView.setFixedAspectRatio(isChecked);
-        cropImageView.setAspectRatio(aspectRatioXSeekBar.getProgress(),
-            aspectRatioYSeekBar.getProgress());
-        aspectRatioXSeekBar.setEnabled(isChecked);
-        aspectRatioYSeekBar.setEnabled(isChecked);
-      }
+    fixedAspectRatioToggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+      cropImageView.setFixedAspectRatio(isChecked);
+      cropImageView.setAspectRatio(aspectRatioXSeekBar.getProgress(),
+          aspectRatioYSeekBar.getProgress());
+      aspectRatioXSeekBar.setEnabled(isChecked);
+      aspectRatioYSeekBar.setEnabled(isChecked);
     });
     // Set seek bars to be disabled until toggle button is checked.
     aspectRatioXSeekBar.setEnabled(false);
@@ -117,11 +109,9 @@ public class CropperActivity extends AppCompatActivity {
     guidelinesSpinner.setSelection(GUIDELINES_ON_TOUCH);
 
     // Initialize the Crop button.
-    cropButton.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        final Bitmap croppedImage = cropImageView.getCroppedImage();
-        croppedImageView.setImageBitmap(croppedImage);
-      }
+    cropButton.setOnClickListener(v -> {
+      final Bitmap croppedImage = cropImageView.getCroppedImage();
+      croppedImageView.setImageBitmap(croppedImage);
     });
   }
 }

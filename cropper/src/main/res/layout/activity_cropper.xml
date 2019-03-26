@@ -30,7 +30,7 @@
         android:layout_marginTop="@dimen/content_padding"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/butterfly"
+        android:src="@drawable/violetsky"
         />
 
     <LinearLayout
