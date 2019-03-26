@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import com.nec.baselib.pop.Pop;
+import com.nec.cropper.CropperActivity;
 import com.nec.myxycode.architecture.ArchitectureActivity;
 import com.nec.myxycode.chat.ChatActivity;
 import com.nec.myxycode.draggableRC.DraggableRCActivity;
@@ -85,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
   public void rxbinding(View view) {
     Pop.show(findViewById(R.id.btn_rxbinding));
     this.startActivity(new Intent(this, RxBindingActivity.class));
+  }
+
+  public void cropper(View view) {
+    Pop.show(findViewById(R.id.btn_cropper));
+    this.startActivity(new Intent(this, CropperActivity.class));
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {

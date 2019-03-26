@@ -127,6 +127,15 @@
         android:text="RXBINDING"
         />
 
+    <Button
+        android:id="@+id/btn_cropper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="cropper"
+        android:text="CROPPER"
+        />
+
   </LinearLayout>
 
 </ScrollView>
