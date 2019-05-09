@@ -23,7 +23,7 @@ import com.nec.baselib.R;
  */
 public class DampLayout extends LinearLayout implements NestedScrollingParent2 {
 
-  private static final int MAX_DISTANCE = 188;
+  private static final int MAX_DISTANCE = 288;
   private View headerView;
   private View footerView;
   private View childView;
@@ -300,7 +300,7 @@ public class DampLayout extends LinearLayout implements NestedScrollingParent2 {
 
     private void init() {
       this.setInterpolator(new DecelerateInterpolator());
-      this.setDuration(255);
+      this.setDuration(320);
       this.addUpdateListener(new AnimatorUpdateListener() {
         @Override public void onAnimationUpdate(ValueAnimator animation) {
           float currValue = (float) getAnimatedValue();
