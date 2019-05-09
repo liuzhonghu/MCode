@@ -11,7 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.nec.baselib.BounceRcView;
+import com.nec.baselib.view.BounceRcView;
 import com.nec.myxycode.R;
 import com.nec.baselib.NormalItem;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;

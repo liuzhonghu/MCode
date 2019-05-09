@@ -135,6 +135,14 @@
         android:onClick="cropper"
         android:text="CROPPER"
         />
+    <Button
+        android:id="@+id/btn_damp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:onClick="damp"
+        android:text="DAMP"
+        />
 
   </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.nec.baselib;
+package com.nec.baselib.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import com.nec.baselib.R;
 
 /**
  * @author Elijah <a href="https://github.com/liuzhonghu">Contact me.</a>
@@ -29,11 +30,6 @@ public class BounceRcView extends RecyclerView {
     paddingBottom = getPaddingBottom();
     paddingLeft = getPaddingLeft();
     paddingRight = getPaddingRight();
-
-    TypedArray typedArray =
-        context.obtainStyledAttributes(attrs, R.styleable.BounceRcView, defStyle, 0);
-    orientation = typedArray.getInt(R.styleable.BounceRcView_orientation, 0);
-    typedArray.recycle();
   }
 
   public int getOrientation() {
