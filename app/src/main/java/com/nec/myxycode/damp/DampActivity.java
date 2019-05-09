@@ -1,18 +1,16 @@
 package com.nec.myxycode.damp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import com.nec.baselib.NormalItem;
-import com.nec.baselib.util.VibratorUtil;
 import com.nec.myxycode.R;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
-import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
-import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,16 +33,27 @@ public class DampActivity extends AppCompatActivity {
 
     recyclerView = findViewById(R.id.rc_view);
     recyclerView.setHasFixedSize(true);
-    LinearLayoutManager layoutManager =
-        new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-    recyclerView.setLayoutManager(layoutManager);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    final int spacing = getResources().getDimensionPixelOffset(R.dimen.default_spacing_small);
+    recyclerView.addItemDecoration(new ItemOffsetDecoration(spacing));
 
     DragRecyclerAdapter adapter =
-        new DragRecyclerAdapter(this, mDataList, R.layout.drag_item_horizontal_list);
+        new DragRecyclerAdapter(this, mDataList, R.layout.drag_item_vertical_list);
     recyclerView.setAdapter(adapter);
 
+    runLayoutAnimation(recyclerView);
+  }
+
+  public void reload(View view) {
+    runLayoutAnimation(recyclerView);
+  }
+
+  private void runLayoutAnimation(final RecyclerView recyclerView) {
+    final Context context = recyclerView.getContext();
+
     final LayoutAnimationController controller =
-        AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_fall_down);
+        AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_right);
 
     recyclerView.setLayoutAnimation(controller);
     recyclerView.getAdapter().notifyDataSetChanged();

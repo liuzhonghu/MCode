@@ -6,15 +6,28 @@
     android:layout_height="match_parent"
     >
 
-  <com.nec.baselib.view.DampLayout
+  <android.support.v7.widget.AppCompatButton
+      android:id="@+id/btn_reload"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      app:orientation="horizontal"
+      android:layout_centerHorizontal="true"
+      android:onClick="reload"
+      android:text="Reload"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
+
+
+  <com.nec.baselib.view.DampLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/btn_reload"
+      android:layout_marginTop="24dp"
+      app:orientation="vertical"
       >
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rc_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
   </com.nec.baselib.view.DampLayout>
