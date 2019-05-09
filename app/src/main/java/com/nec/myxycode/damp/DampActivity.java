@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import com.nec.baselib.NormalItem;
 import com.nec.baselib.util.VibratorUtil;
 import com.nec.myxycode.R;
@@ -41,16 +43,12 @@ public class DampActivity extends AppCompatActivity {
         new DragRecyclerAdapter(this, mDataList, R.layout.drag_item_horizontal_list);
     recyclerView.setAdapter(adapter);
 
-    final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new DragItemTouchCallback(adapter));
-    itemTouchHelper.attachToRecyclerView(recyclerView);
-    recyclerView.addOnItemTouchListener(new DragItemClickListener(recyclerView) {
-      @Override public void onLongClick(RecyclerView.ViewHolder vh) {
-        if (vh.getLayoutPosition() < mDataList.size()) {
-          itemTouchHelper.startDrag(vh);
-          VibratorUtil.Vibrate(DampActivity.this, 100);
-        }
-      }
-    });
+    final LayoutAnimationController controller =
+        AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_fall_down);
+
+    recyclerView.setLayoutAnimation(controller);
+    recyclerView.getAdapter().notifyDataSetChanged();
+    recyclerView.scheduleLayoutAnimation();
   }
 
   private void initData() {

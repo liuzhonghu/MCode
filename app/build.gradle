@@ -44,6 +44,7 @@ dependencies {
   })
   annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
   implementation deps.appcompatv7
+  implementation deps.cardview
   implementation deps.recyclerviewv7
   implementation deps.supportConstraint
   implementation deps.supportDesign

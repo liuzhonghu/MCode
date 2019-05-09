@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".damp.AnimateRcActivity"
+    >
+
+  <android.support.v7.widget.AppCompatButton
+      android:id="@+id/btn_reload"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:onClick="reload"
+      android:text="Reload"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/animate_rc"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/btn_reload"
+      android:clipToPadding="false"
+      android:padding="@dimen/default_spacing_medium"
+      />
+
+</RelativeLayout>
