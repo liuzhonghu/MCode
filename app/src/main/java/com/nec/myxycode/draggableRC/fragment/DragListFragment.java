@@ -2,6 +2,7 @@ package com.nec.myxycode.draggableRC.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.nec.baselib.BounceRcView;
 import com.nec.myxycode.R;
 import com.nec.baselib.NormalItem;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
@@ -69,10 +71,10 @@ public class DragListFragment extends Fragment {
     isVertical = getArguments().getBoolean(ARG_PARAM1, true);
   }
 
-  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    RecyclerView view = new RecyclerView(container.getContext());
+    BounceRcView view = new BounceRcView(container.getContext());
     view.setBackgroundColor(Color.GRAY);
     return view;
   }
@@ -82,9 +84,10 @@ public class DragListFragment extends Fragment {
 
     DragRecyclerAdapter adapter = new DragRecyclerAdapter(this.getContext(), mDataList,
         isVertical ? R.layout.drag_item_vertical_list : R.layout.drag_item_horizontal_list);
-    RecyclerView recyclerView = (RecyclerView) view;
+    BounceRcView recyclerView = (BounceRcView) view;
     recyclerView.setHasFixedSize(true);
     recyclerView.setAdapter(adapter);
+    recyclerView.setOrientation(isVertical ? 0 : 1);
 
     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
         isVertical ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL, false);
@@ -96,7 +99,7 @@ public class DragListFragment extends Fragment {
       @Override public void onLongClick(RecyclerView.ViewHolder vh) {
         if (vh.getLayoutPosition() < mDataList.size()) {
           itemTouchHelper.startDrag(vh);
-          VibratorUtil.Vibrate(getActivity(), 100);   //震动70ms
+          VibratorUtil.Vibrate(getActivity(), 100);
         }
       }
     });

@@ -3,17 +3,15 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="E:/Android/gradle-4.7" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../Android/gradle-4.7" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
+            <option value="$PROJECT_DIR$/cropper" />
             <option value="$PROJECT_DIR$/fpsactorlib" />
             <option value="$PROJECT_DIR$/kboardlib" />
             <option value="$PROJECT_DIR$/structure" />
