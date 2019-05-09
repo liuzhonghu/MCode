@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import com.nec.baselib.NormalItem;
+import com.nec.baselib.util.VibratorUtil;
 import com.nec.myxycode.R;
 import com.nec.myxycode.draggableRC.adapter.DragRecyclerAdapter;
+import com.nec.myxycode.draggableRC.callback.DragItemClickListener;
+import com.nec.myxycode.draggableRC.callback.DragItemTouchCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +27,7 @@ public class DampActivity extends AppCompatActivity {
 
   RecyclerView recyclerView;
 
-  private List<NormalItem> mDataList = new ArrayList<NormalItem>();
+  private List<NormalItem> mDataList = new ArrayList<>();
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,6 +45,17 @@ public class DampActivity extends AppCompatActivity {
     DragRecyclerAdapter adapter =
         new DragRecyclerAdapter(this, mDataList, R.layout.drag_item_vertical_list);
     recyclerView.setAdapter(adapter);
+
+    final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new DragItemTouchCallback(adapter));
+    itemTouchHelper.attachToRecyclerView(recyclerView);
+    recyclerView.addOnItemTouchListener(new DragItemClickListener(recyclerView) {
+      @Override public void onLongClick(RecyclerView.ViewHolder vh) {
+        if (vh.getLayoutPosition() < mDataList.size()) {
+          itemTouchHelper.startDrag(vh);
+          VibratorUtil.Vibrate(DampActivity.this, 100);
+        }
+      }
+    });
 
     runLayoutAnimation(recyclerView);
   }
