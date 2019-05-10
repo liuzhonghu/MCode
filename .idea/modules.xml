@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/cropper/cropper.iml" filepath="$PROJECT_DIR$/cropper/cropper.iml" />
       <module fileurl="file://$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" filepath="$PROJECT_DIR$/fpsactorlib/fpsactorlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/kboardlib/kboardlib.iml" filepath="$PROJECT_DIR$/kboardlib/kboardlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/structure/structure.iml" filepath="$PROJECT_DIR$/structure/structure.iml" />
     </modules>
   </component>

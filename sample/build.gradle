@@ -1,38 +1,24 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
-  dataBinding {
-    enabled = true
-  }
-
   compileSdkVersion rootProject.ext.compileSdkVersion
   buildToolsVersion rootProject.ext.buildToolsVersion
+
   defaultConfig {
-    applicationId "com.nec.myxycode"
+    applicationId "com.nec.sample"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 1
     versionName "1.0"
 
-    // Enabling multidex support.
-    multiDexEnabled true
-
-    packagingOptions {
-      exclude 'META-INF/rxjava.properties'
-    }
-
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
+
   buildTypes {
     release {
       minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
-  }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
   }
 }
 
@@ -42,22 +28,14 @@ dependencies {
   androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+
+  implementation deps.junit
   implementation deps.appcompatv7
   implementation deps.cardview
   implementation deps.recyclerviewv7
   implementation deps.supportConstraint
   implementation deps.supportDesign
   implementation deps.supportV4
-  implementation deps.okhttp
-  implementation deps.dagger
-  implementation deps.junit
-  implementation deps.lottie
-  implementation deps.rxbinding
 
-  api project(path: ':kboardlib')
-  api project(path: ':fpsactorlib')
-  api project(path: ':structure')
   api project(path: ':baselib')
-  api project(path: ':cropper')
 }
