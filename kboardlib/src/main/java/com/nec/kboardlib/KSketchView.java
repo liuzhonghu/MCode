@@ -769,7 +769,7 @@ public class KSketchView extends View implements View.OnTouchListener {
     if (addBitmap != null) {
       canvas.drawBitmap(addBitmap, 0, 0, null);
     }
-    canvas.save(Canvas.ALL_SAVE_FLAG);
+    canvas.save();
     canvas.restore();
     //        return newBM;
     Bitmap bitmap = BitmapUtils.createBitmapThumbnail(newBM, true, 800, 1280);
