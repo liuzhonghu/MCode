@@ -12,6 +12,7 @@
       android:layout_centerVertical="true"
       android:layout_marginLeft="5dp"
       android:layout_marginStart="5dp"
+      android:visibility="gone"
       />
 
 

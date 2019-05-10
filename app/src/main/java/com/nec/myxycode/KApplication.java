@@ -1,6 +1,7 @@
 package com.nec.myxycode;
 
 import com.nec.baselib.ApplicationBase;
+import com.nec.baselib.util.SizeUtil;
 
 /**
  * @author Elijah <a href="zhonghu.liu@quvideo.com">Contact me.</a>
@@ -15,6 +16,7 @@ public class KApplication extends ApplicationBase {
     super.onCreate();
     component = FpsGraphFactory.getObjectGraph(this);
     component.inject(this);
+    SizeUtil.init(this);
   }
 
   public AppComponent getComponent() {

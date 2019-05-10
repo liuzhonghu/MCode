@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="28dp"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="32dp"
     android:layout_height="60dp"
     android:background="@drawable/shape_stage_indicator"
-    android:gravity="center"
-    android:orientation="horizontal"
     >
-
-  <ImageView
+  <LinearLayout
+      android:id="@+id/container"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@mipmap/indicator_level_icon"
-      />
+      android:layout_centerInParent="true"
+      android:gravity="center"
+      android:orientation="horizontal"
+      >
 
-
-</LinearLayout>
+  </LinearLayout>
+</RelativeLayout>
