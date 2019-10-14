@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.nec.baselib.pop.Pop;
+import com.nec.sample.roundprogress.RoundProgressActivity;
 import com.nec.sample.stage.StageActivity;
 
 /**
@@ -20,5 +21,10 @@ public class SampleActivity extends AppCompatActivity {
   public void stage(View view) {
     Pop.show(findViewById(R.id.btn_stage));
     this.startActivity(new Intent(this, StageActivity.class));
+  }
+
+  public void progressBar(View view) {
+    Pop.show(findViewById(R.id.btn_progressBar));
+    this.startActivity(new Intent(this, RoundProgressActivity.class));
   }
 }

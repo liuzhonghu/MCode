@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="RoundProgressView">
+    <attr name="circleProgress" format="integer"/> <!-- 进度0-100 -->
+    <attr name="startAngle" format="integer"/> <!-- 开始的角度0-360 -->
+    <attr name="circleCorner" format="dimension" /> <!-- 圆角 -->
+    <attr name="backgroundColor" format="color"/> <!-- 背景的颜色 -->
+  </declare-styleable>
+</resources>

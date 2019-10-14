@@ -2,9 +2,14 @@
 <resources>
   <declare-styleable name="DampLayout">
     <attr name="orientation">
-      <enum name="horizontal" value="0"/>
-      <enum name="vertical" value="1"/>
+      <enum name="horizontal" value="0" />
+      <enum name="vertical" value="1" />
     </attr>
+  </declare-styleable>
+
+  <declare-styleable name="RoundOvalImageView">
+    <attr name="radius" format="dimension" />
+    <attr name="overType" format="integer" />
   </declare-styleable>
 
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".roundprogress.RoundProgressActivity">
+
+  <com.nec.baselib.view.RoundOvalImageView
+    android:id="@+id/cover"
+    android:layout_width="60dp"
+    android:layout_height="90dp"
+    android:src="@mipmap/timg118"
+    app:overType="1"
+    app:radius="8dp" />
+
+  <com.nec.sample.roundprogress.RoundProgressView
+    android:id="@+id/round_Progress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignStart="@+id/cover"
+    android:layout_alignTop="@+id/cover"
+    android:layout_alignEnd="@+id/cover"
+    android:layout_alignBottom="@+id/cover"
+    app:backgroundColor="#99020202"
+    app:circleCorner="4dp"
+    app:circleProgress="10"
+    app:startAngle="270" />
+
+</RelativeLayout>
