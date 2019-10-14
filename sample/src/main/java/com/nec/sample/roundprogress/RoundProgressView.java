@@ -57,12 +57,6 @@ public class RoundProgressView extends View {
     init(context, attrs);
   }
 
-  public RoundProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr,
-      int defStyleRes) {
-    super(context, attrs, defStyleAttr, defStyleRes);
-    init(context, attrs);
-  }
-
   private void init(Context context, @Nullable AttributeSet attrs) {
     TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressView);
     mProgress = typedArray.getInt(R.styleable.RoundProgressView_circleProgress, 0);
